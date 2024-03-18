@@ -10,9 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_18_155717) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_18_170110) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.string "status", default: "pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigserial "asker_id", null: false
+    t.bigserial "receiver_id", null: false
+    t.index ["asker_id"], name: "index_chatrooms_on_asker_id"
+    t.index ["receiver_id"], name: "index_chatrooms_on_receiver_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.date "date"
+    t.text "description"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "hobby_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["hobby_id"], name: "index_events_on_hobby_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "hobbies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string "status", default: "pending"
+    t.bigint "event_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_requests_on_event_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
+  end
+
+  create_table "selected_hobbies", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "hobby_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hobby_id"], name: "index_selected_hobbies_on_hobby_id"
+    t.index ["user_id"], name: "index_selected_hobbies_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +81,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_155717) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
+    t.date "birthdate"
+    t.text "bio"
+    t.string "location"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "chatrooms", "users", column: "asker_id"
+  add_foreign_key "chatrooms", "users", column: "receiver_id"
+  add_foreign_key "events", "hobbies"
+  add_foreign_key "events", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
+  add_foreign_key "requests", "events"
+  add_foreign_key "requests", "users"
+  add_foreign_key "selected_hobbies", "hobbies"
+  add_foreign_key "selected_hobbies", "users"
 end
