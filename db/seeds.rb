@@ -84,3 +84,52 @@ User.create!(
 )
 
 puts "Seeding users completed!"
+
+puts "Seeding events..."
+
+Event.create!(
+  name:"Movie premiere",
+  date:"20/04/2024",
+  description:"A premiere of a really great movie! come and check it out!",
+  location:"Dublin, Ireland",
+  user_id:User.first.id,
+  hobby_id:Hobby.first.id
+)
+
+Event.create!(
+  name:"Knitting event",
+  date:"20/04/2024",
+  description:"A really fun knitting event, for people of all skills! Check it out!",
+  location:"Seattle, USA",
+  user_id:User.first.id,
+  hobby_id:Hobby.first.id
+)
+
+Event.create!(
+  name:"Broadway Play",
+  date:"20/04/2024",
+  description:"A fantastic musical-comedy for all ages. It's gonna be a hoot and holler!",
+  location:"New York City, USA",
+  user_id:User.last.id,
+  hobby_id:Hobby.first.id
+)
+
+Event.create!(
+  name:"Hike at Mt McKinley",
+  date:"21/09/2024",
+  description:"A hike at a very high mountain in Alaska-for more advanced hikers!",
+  location:"Alaska, USA",
+  user_id:User.first.id,
+  hobby_id:Hobby.first.id
+)
+
+Event.create!(
+  name:"Pub Crawl",
+  date:"07/07/2024",
+  description:"Go to the best pubs in the city, and drink your tits off with your friends!",
+  location:"Birmingham, UK",
+  user_id:User.last.id,
+  hobby_id:Hobby.first.id
+)
+
+puts "Seeding events completed!"
