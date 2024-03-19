@@ -1,15 +1,22 @@
 <div class="container">
 
   <h1><%= @user.username %></h1>
+
   <% age = Date.today.year - @user.birthdate.year %>
   <% age -= 1 if Date.today.strftime("%m%d") < @user.birthdate.strftime("%m%d") %>
-
   <p>Age: <%= age %></p>
   <p>Location: <%= @user.location %></p>
   <p>Bio: <%= @user.bio %></p>
   <p>Selected hobbies: </p>
-  <p>Events:  </p>
-
+  <% @hobbies.each do |hobby| %>
+  <p><%= hobby.name %></p>
+  <% end %>
+  <p>Events: </p>
+  <ul>
+  <% @events.each do |event| %>
+  <li><%= event.name%> | <%= event.location%> | <%= event.date%></li>
+  <%end%>
+  </ul>
   <% if @user == current_user %>
     <%= link_to "edit", edit_registration_path(current_user) %>
   <% end %>
