@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :chatrooms_as_asker, class_name: "Chatroom", foreign_key: :asker_id
-  has_many :chatrooms_as_receiver, class_name: "Chatroom", foreign_key: :receiver_id
+  has_many :chatrooms_as_asker, class_name: "Chatroom", foreign_key: :asker_id, dependent: :destroy
+  has_many :chatrooms_as_receiver, class_name: "Chatroom", foreign_key: :receiver_id, dependent: :destroy
   has_many :selected_hobbies
   has_many :hobbies, through: :selected_hobbies
 
