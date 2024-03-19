@@ -8,9 +8,11 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+
 Hobby.destroy_all
 Chatroom.destroy_all
 User.destroy_all
+Event.destroy_all
 
 puts "Seeding hobbies..."
 
