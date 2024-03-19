@@ -11,6 +11,7 @@
 Hobby.destroy_all
 Chatroom.destroy_all
 User.destroy_all
+Event.destroy_all
 
 puts "Seeding hobbies..."
 
