@@ -1,12 +1,26 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.icon-bar {
+  position: fixed; /* Position the icon bar */
+  bottom: 0; /* Align to the bottom of the viewport */
+  width: 100%; /* Set the width to fill the entire viewport */
+  height: 8%; /* Set the height slightly smaller */
+  background-color: #3d3b8e; /* Dark-grey background */
+  display: flex; /* Make the icon bar horizontal */
+  justify-content: space-between; /* Center-align the icons horizontally */
+  align-items: center;
+  padding: 5px; /* Reduce padding */
+  margin: auto;
+}
+.icon-bar a {
+  display: inline-block;
+  padding: 10px 31px; /* Initial padding */
+  transition: all 0.3s ease;
+  color: #d7ff81;
+  font-size: 32px;
+  margin: 0;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.icon-bar a:hover,
+.icon-bar a.active {
+  background-color: rgba(226, 163, 225, 0.7);
+  padding: 10px 31px; /* Include hover padding */
 }
