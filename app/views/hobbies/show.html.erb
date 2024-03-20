@@ -1,20 +1,25 @@
-<div class="hobby-show-card-container">
+<div class="hobby-show-card-container align-center">
   <div class="hobby-show-top">
-    <%= cl_image_tag @hobby.photo.key, width: "100px", height: "100px" %>
-    <h2 class="text-center"><%= @hobby.name %></h2>
+    <div class="hobby-show-top-icon">
+      <%= cl_image_tag @hobby.photo.key, width: "90px", height: "90px" %>
+    </div>
+    <div class="hobby-show-top-text">
+      <h1 class="text-center"><%= @hobby.name %></h1>
+    </div>
   </div>
 
   <div class="hobby-show-card-body">
-    <h3>Sub-hobbies:</h3>
+    <h3>Sub-hobbies</h3>
 
-    <h3>Users:</h3>
+    <h3>Users</h3>
 
-    <h3>Events:</h3>
+    <h3>Events</h3>
 
-    <h3>Resources:</h3>
+    <h3>Resources</h3>
 
-    <%= link_to "Back to Hobby Hub", hobbies_path %>
-
+    <%= link_to hobbies_path do %>
+      <button class="hobby-show-button">Hobby Hub</button>
+    <% end %>
   </div>
 
 </div>
