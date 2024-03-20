@@ -12,6 +12,25 @@
   <p><%= hobby.name %></p>
   <% end %>
   <p>Events: </p>
+  <% if @user == current_user %>
+    <button data-bs-toggle="modal" data-bs-target="#eventAddModal">Add</button>
+    <div class="modal fade" id="eventDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="eventDetailModalLabel">New Event</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+          </div>
+          <div class="modal-footer">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
   <ul>
   <% @events.each do |event| %>
   <li><%= event.name%> | <%= event.location%> | <%= event.date%></li>
