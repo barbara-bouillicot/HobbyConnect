@@ -26,13 +26,21 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "Bio" }%>
-    <%= f.label :selected_hobbies, 'Select your 6 hobbies' %>
-    <%= f.input :selected_hobbies, as: :select,
-                collection: Hobby.all,
-                input_html: { multiple: true, autocomplete: "hobbies", size: 6 },
-                label: false,
-                required: true %>
-
+ <%= f.label :hobby_ids, 'Select your 6 hobbies' %>
+                <div class="image-checkboxes">
+                <% Hobby.all.each do |hobby| %>
+                <% if hobby.photo.attached? %>
+                <label>
+                <div class="image-checkbox">
+                <%= cl_image_tag hobby.photo.key, class: "hobby-icon"  %>
+                <%= f.check_box :hobby_ids, { multiple: true, autocomplete: "hobbies" }, hobby.id, nil %>
+                </div>
+                <span class="hobby-name"><%= hobby.name %></span>
+                </label>
+                <% end %>
+                <% end %>
+                </div>
+    <%= f.input :photo, as: :file %>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,

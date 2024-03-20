@@ -9,4 +9,5 @@ class UsersController < ApplicationController
     @events = @user.events
     @hobbies = @user.hobbies
   end
+
 end

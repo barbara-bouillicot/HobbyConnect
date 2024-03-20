@@ -1,7 +1,9 @@
 <div class="container">
 
   <h1><%= @user.username %></h1>
-
+  <% if @user.photo.attached? %>
+  <%= cl_image_tag(@user.photo.key, class: "avatar")%>
+  <% end %>
   <% age = Date.today.year - @user.birthdate.year %>
   <% age -= 1 if Date.today.strftime("%m%d") < @user.birthdate.strftime("%m%d") %>
   <p>Age: <%= age %></p>
@@ -10,7 +12,12 @@
   <p>Selected hobbies: </p>
   <% @hobbies.each do |hobby| %>
   <p><%= hobby.name %></p>
+  <% if hobby.photo.attached? %>
+  <div class="icon-container">
+    <%= cl_image_tag hobby.photo.key, class: "hobby-icons" %>
+  </div>
   <% end %>
+<% end %>
   <p>Events: </p>
   <ul>
   <% @events.each do |event| %>
