@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def index
     @users = User.search(params[:search])
   end
@@ -9,5 +8,4 @@ class UsersController < ApplicationController
     @events = @user.events
     @hobbies = @user.hobbies
   end
-
 end
