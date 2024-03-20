@@ -16,6 +16,14 @@ class User < ApplicationRecord
   validates :bio, length: { in: 20..200 }
   validate :validate_age
 
+  def self.search(query)
+    if query.present?
+      where("username ILIKE ?", "%#{query}%")
+    else
+      User.all
+    end
+  end
+
   def chatrooms
     chatrooms_as_asker + chatrooms_as_receiver
   end

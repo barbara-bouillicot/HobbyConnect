@@ -2,6 +2,11 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    if params[:search].present?
+      @events = Event.where("name ILIKE ?", "%#{params[:search]}%")
+    else
+      @events = Event.all
+    end
   end
 
   def new
