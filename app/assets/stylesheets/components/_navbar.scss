@@ -1,26 +1,26 @@
 .icon-bar {
-  position: fixed; /* Position the icon bar */
-  bottom: 0; /* Align to the bottom of the viewport */
-  width: 100%; /* Set the width to fill the entire viewport */
-  height: 8%; /* Set the height slightly smaller */
-  background-color: #3d3b8e; /* Dark-grey background */
-  display: flex; /* Make the icon bar horizontal */
-  justify-content: space-between; /* Center-align the icons horizontally */
+  position: fixed;
+  bottom: 0;
+  width: auto;
+  height: 8%;
+  background-color: #25245e;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 5px; /* Reduce padding */
+  padding: 5px;
   margin: auto;
 }
 .icon-bar a {
   display: inline-block;
-  padding: 10px 31px; /* Initial padding */
+  padding: 10px 31px;
   transition: all 0.3s ease;
-  color: #d7ff81;
+  color: #d5aaff;
   font-size: 32px;
   margin: 0;
 }
 
 .icon-bar a:hover,
 .icon-bar a.active {
-  background-color: rgba(226, 163, 225, 0.7);
-  padding: 10px 31px; /* Include hover padding */
+  background-color: #4b4aa9;
+  padding: 10px 31px;
 }
