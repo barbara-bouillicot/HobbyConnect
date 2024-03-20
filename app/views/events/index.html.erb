@@ -7,28 +7,7 @@
       <p><%= event.location %></p>
       <p><%= event.date %></p>
     </div>
-    <div class="modal fade" id="eventDetailModal<%= event.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="eventDetailModalLabel<%= event.id %>"><%= event.name %></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p><%= event.location %></p>
-            <p><%= event.date %></p>
-            <p><%= event.description %></p>
-          </div>
-          <div class="modal-footer">
-            <% if event.user_id != current_user.id %>
-              <button>I'm interested</button>
-            <% else %>
-              <button>Edit</button>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render "events/show", event: event%>
 
 
   <% end %>
