@@ -23,9 +23,20 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    redirect_to user_path(current_user)
+
+  end
+
   private
 
   def event_params
-    params.require(:costume).permit(:name, :location, :date, :description, :user_id, :hobby_id)
+    params.require(:event).permit(:name, :location, :date, :description, :user_id, :hobby_id)
   end
 end
