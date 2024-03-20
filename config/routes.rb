@@ -11,5 +11,9 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :users, only: [:show, :index]
+
   resources :chatrooms, :events, only: [:index]
+
+  resources :events, only: [:index, :new, :create]
+
 end
