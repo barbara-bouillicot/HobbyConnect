@@ -1,5 +1,33 @@
-<div id="eventModal" class="modal">
-  <div class="modal-content">
-    <% event.name %>
+<div class="modal fade" id="eventDetailModal<%= event.id %>" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true" data-controller="edit-event">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eventDetailModalLabel<%= event.id %>" data-model-title="<%= event.name %>"><%= event.name %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body event-infos" data-edit-event-target="infos">
+        <p><%= event.location %></p>
+        <p><%= event.date %></p>
+        <p><%= event.description %></p>
+      </div>
+      <div class="modal-footer">
+        <% if event.user_id != current_user.id %>
+          <button>I'm interested</button>
+        <% else %>
+          <button data-action="click->edit-event#displayForm" data-edit-event-target="editButton">Edit</button>
+        <% end %>
+      </div>
+
+      <div class="container">
+        <%= simple_form_for event, html: { class: "d-none", data: { edit_event_target: "form", action: "submit->edit-event#update" } } do |f| %>
+          <%= f.input :hobby_id %>
+          <%= f.input :name %>
+          <%= f.input :location %>
+          <%= f.input :date, as: :string, input_html: { data: { controller: "datepicker" } } %>
+          <%= f.input :description %>
+          <%= f.submit class: "btn btn-form", value: "Save" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

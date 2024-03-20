@@ -1,12 +1,20 @@
-<div class="container">
-  <h1>New Event</h1>
-
-  <%= simple_form_for(@event) do |f| %>
-    <%= f.input :hobby_id %>
-    <%= f.input :name %>
-    <%= f.input :date %>
-    <%= f.input :location %>
-    <%= f.input :description %>
-    <%= f.submit class:"btn btn-form"%>
-<% end %>
-</div>
+<div class="modal fade" id="eventAddModal" tabindex="-1" aria-labelledby="eventAddModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="eventAddModalLabel">New Event</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for @event do |f| %>
+              <%= f.input :hobby_id%>
+              <%= f.input :name%>
+              <%= f.input :location%>
+              <%= f.input :date, as: :string, input_html: { data: { controller: "datepicker" }}%>
+              <%= f.input :description%>
+              <%= f.submit class:"btn btn-form", value: "Add Event"%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
