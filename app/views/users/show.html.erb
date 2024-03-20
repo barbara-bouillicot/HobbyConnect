@@ -1,5 +1,4 @@
 <div class="container">
-
   <h1><%= @user.username %></h1>
   <% if @user.photo.attached? %>
   <%= cl_image_tag(@user.photo.key, class: "avatar")%>
@@ -11,41 +10,27 @@
   <p>Bio: <%= @user.bio %></p>
   <p>Selected hobbies: </p>
   <% @hobbies.each do |hobby| %>
-  <p><%= hobby.name %></p>
   <% if hobby.photo.attached? %>
   <div class="icon-container">
     <%= cl_image_tag hobby.photo.key, class: "hobby-icons" %>
   </div>
+  <p><%= hobby.name %></p>
   <% end %>
 <% end %>
   <p>Events: </p>
   <% if @user == current_user %>
     <button data-bs-toggle="modal" data-bs-target="#eventAddModal">Add</button>
-    <div class="modal fade" id="eventDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="eventDetailModalLabel">New Event</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-
-          </div>
-          <div class="modal-footer">
-
-          </div>
-        </div>
-      </div>
-    </div>
+      <%= render "events/new", event: @event %>
     <% end %>
   <ul>
   <% @events.each do |event| %>
-  <li><%= event.name%> | <%= event.location%> | <%= event.date%></li>
-  <%end%>
+    <div class="event-card" data-bs-toggle="modal" data-bs-target="#eventDetailModal<%= event.id %>">
+      <%= event.hobby_id%> | <%= event.name%> | <%= event.location%> | <%= event.date %>
+    </div>
+    <%= render "events/show", event: event%>
+  <% end %>
   </ul>
   <% if @user == current_user %>
     <%= link_to "edit", edit_registration_path(current_user) %>
   <% end %>
-
-
 </div>
