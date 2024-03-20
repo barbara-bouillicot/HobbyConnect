@@ -5,4 +5,12 @@ class Chatroom < ApplicationRecord
   has_many :messages
 
   validates :status, presence: true
+
+    def self.search(query)
+    if query.present?
+      where("name ILIKE ?", "%#{query}%")
+    else
+      Chatrooms.all
+    end
+  end
 end
