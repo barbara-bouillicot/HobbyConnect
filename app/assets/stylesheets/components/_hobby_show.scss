@@ -1,0 +1,32 @@
+.hobby-show-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #d5aaff;
+}
+
+.hobby-show-top {
+  background-color: #d7ff81;
+  color: #3d3b8e;
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
+}
+
+.hobby-show-top h2 {
+  margin: 0;
+  font-weight: bold;
+}
+
+.hobby-show-card-body {
+  align-items: start;
+}
+
+.hobby-show-card-body a {
+  color: #ff4365;
+  font-weight: bold;
+}
