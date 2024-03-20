@@ -9,14 +9,13 @@
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
 
-  <%= stylesheet_link_tag 'header', 'navbar' %>
+  
+  <%= render "shared/header" %>
+  <%= render "shared/navbar" %>
+  <%= render "shared/flashes" %>
 </head>
 
 <body>
-
-<%= render "shared/header" %>
-<%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
 
 <%= yield %>
 </body>

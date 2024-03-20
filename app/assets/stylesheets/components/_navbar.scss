@@ -2,27 +2,25 @@
   position: fixed; /* Position the icon bar */
   bottom: 0; /* Align to the bottom of the viewport */
   width: 100%; /* Set the width to fill the entire viewport */
-  background-color: #92d094; /* Dark-grey background */
+  height: 8%; /* Set the height slightly smaller */
+  background-color: #3d3b8e; /* Dark-grey background */
   display: flex; /* Make the icon bar horizontal */
   justify-content: space-between; /* Center-align the icons horizontally */
-  padding: 10px;
+  align-items: center;
+  padding: 5px; /* Reduce padding */
+  margin: auto;
 }
-
 .icon-bar a {
-  display: inline-block; /* Display the links as inline blocks */
-  text-align: center; /* Center-align text */
-  padding: 14px; /* Increase padding to make the clickable area larger */
-  transition: all 0.3s ease; /* Add transition for hover effects */
-  color: rgb(255, 255, 255); /* White text color */
-  font-size: 36px; /* Increased font-size */
-  margin-left: 10px;
-  margin-right: 10px; /* Add spacing between icons */
+  display: inline-block;
+  padding: 10px 31px; /* Initial padding */
+  transition: all 0.3s ease;
+  color: #d7ff81;
+  font-size: 32px;
+  margin: 0;
 }
 
-.icon-bar a:hover {
-  background-color: rgba(148, 59, 146, 0.7); /* Add a hover color */
-}
-
-.icon-bar .active {
-  background-color: rgb(178, 229, 140); /* Add an active/current color */
+.icon-bar a:hover,
+.icon-bar a.active {
+  background-color: rgba(226, 163, 225, 0.7);
+  padding: 10px 31px; /* Include hover padding */
 }
