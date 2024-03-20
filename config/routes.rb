@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'chatrooms/index'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -13,4 +14,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index]
 
   resources :events, only: [:index, :new, :create, :edit, :update]
+
+  resources :chatrooms, :events, only: [:index]
+
+  resources :hobbies, only: [:index, :show]
+
+
 end

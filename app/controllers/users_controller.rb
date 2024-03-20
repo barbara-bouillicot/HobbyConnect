@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-
   def index
-    @users = User.all
+    @users = User.search(params[:search])
   end
 
   def show
@@ -10,5 +9,4 @@ class UsersController < ApplicationController
     @events = @user.events
     @hobbies = @user.hobbies
   end
-
 end
