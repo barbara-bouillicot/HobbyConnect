@@ -11,11 +11,11 @@
   <p>Bio: <%= @user.bio %></p>
   <p>Selected hobbies: </p>
   <% @hobbies.each do |hobby| %>
-  <p><%= hobby.name %></p>
   <% if hobby.photo.attached? %>
   <div class="icon-container">
     <%= cl_image_tag hobby.photo.key, class: "hobby-icons" %>
   </div>
+  <p><%= hobby.name %></p>
   <% end %>
 <% end %>
   <p>Events: </p>
