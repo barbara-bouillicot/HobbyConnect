@@ -13,5 +13,6 @@ class UsersController < ApplicationController
     @event = Event.new
     @events = @user.events
     @hobbies = @user.hobbies
+    @chatroom = Chatroom.new
   end
 end
