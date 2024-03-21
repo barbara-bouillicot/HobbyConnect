@@ -41,27 +41,42 @@
   <% age = Date.today.year - @user.birthdate.year %>
   <% age -= 1 if Date.today.strftime("%m%d") < @user.birthdate.strftime("%m%d") %>
   <p>Age: <%= age %></p>
+
   <p><i class="fa-solid fa-location-dot"></i> <%= @user.location %></p>
   <div class="separation-line mb-3"></div>
     <p><%= @user.bio %></p>
   <div class="separation-line mb-3"></div>
-
-  <div class="d-flex justify-content-between align-items-center">
-    <h3>Events: </h3>
-    <% if @user == current_user %>
-      <button data-bs-toggle="modal" data-bs-target="#eventAddModal" i class="fa-solid fa-plus "></i></button>
-      <%= render "events/new", event: @event %>
-    <% end %>
-  </div>
-
+ 
+  <p>Created Events: </p>
+  <% if @user == current_user %>
+    <div>
+      <button data-bs-toggle="modal" data-bs-target="#eventAddModal">Add</button>
+    </div>
+    <%= render "events/new", event: @event %>
+  <% end %>
   <ul>
-    <% @events.each do |event| %>
-      <div class="event-card d-flex justify-content-between w-100 mb-3" data-bs-toggle="modal" data-bs-target="#eventDetailModal<%= event.id %>">
-      <%= event.name %> | <%= event.location %> | <%= event.date %>
-      </div>
-      <%= render "events/show", event: event %>
-    <% end %>
+  <% @events.each do |event| %>
+    <div class="event-card" data-bs-toggle="modal" data-bs-target="#eventDetailModal<%= event.id %>">
+      <%= event.hobby_id%> | <%= event.name%> | <%= event.location%> | <%= event.date %>
+    </div>
+    <div class="modal fade" id="eventDetailModal<%= event.id %>" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true" data-controller="edit-event">
+      <%= render "events/event_modal", event: event%>
+    </div>
+   <% end %>
   </ul>
+  <% if @user == current_user %>
+    <p>Accepted Events:</p>
+    <% @requests.each do |request| %>
+      <% if request.accepted?%>
+        <div class="event-card" data-bs-toggle="modal" data-bs-target="#eventDetailModal<%= request.event.id %>">
+        <%= request.event.name%>
+        </div>
+        <div class="modal fade" id="eventDetailModal<%= request.event.id %>" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true" data-controller="edit-event">
+          <%= render "events/event_modal", event: request.event %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
 
 </div>
 </div>
