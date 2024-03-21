@@ -10,12 +10,12 @@
 
 
   <% @users.each do |user| %>
-
+   <% if user != current_user %>
     <div class="user-card">
       <h2><%= link_to user.username, user_path(user) %></h2>
       <h3>Hobbies: X X X X X </h3>
     </div>
-
+    <% end %>
   <% end %>
 
 </div>
