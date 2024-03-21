@@ -8,6 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+
 SelectedHobby.destroy_all
 Hobby.destroy_all
 Chatroom.destroy_all
@@ -93,10 +94,64 @@ file_nature = URI.open("https://res.cloudinary.com/dowj44v2p/image/upload/v17109
 nature = Hobby.create!(name: "Nature")
 nature.photo.attach(io: file_nature, filename: 'landscape_yhcr2r.png', content_type: 'image/jpg')
 
+file_astronomy = URI.open("https://res.cloudinary.com/dowj44v2p/image/upload/v1711030017/astronomy_xeuaz4.png")
+astronomy = Hobby.create!(name: "Astronomy")
+astronomy.photo.attach(io: file_astronomy, filename: 'astronomy_xeuaz4.png', content_type: 'image/jpg')
+
+file_spirituality = URI.open("https://res.cloudinary.com/dowj44v2p/image/upload/v1711030212/pray_mkwwyi.png")
+spirituality = Hobby.create!(name: "Spirituality")
+spirituality.photo.attach(io: file_spirituality, filename: 'pray_mkwwyi.png', content_type: 'image/jpg')
+
+file_camping = URI.open("https://res.cloudinary.com/dowj44v2p/image/upload/v1711030384/tent_jtz4q1.png")
+camping = Hobby.create!(name: "Camping")
+camping.photo.attach(io: file_camping, filename: 'tent_jtz4q1.png', content_type: 'image/jpg')
+
+file_hiking = URI.open("https://res.cloudinary.com/dowj44v2p/image/upload/v1711030533/hiking_h8xbuo.png")
+hiking = Hobby.create!(name: "Hiking")
+hiking.photo.attach(io: file_hiking, filename: 'hiking_h8xbuo.png', content_type: 'image/jpg')
+
+file_painting = URI.open("https://res.cloudinary.com/dowj44v2p/image/upload/v1711030677/painting_tixchx.png")
+painting = Hobby.create!(name: "Painting")
+painting.photo.attach(io: file_painting, filename: 'painting_tixchx.png', content_type: 'image/jpg')
+
+file_scuba = URI.open("https://res.cloudinary.com/dowj44v2p/image/upload/v1711030893/scuba-diving_l3pajf.png")
+scuba = Hobby.create!(name: "Scuba Diving")
+scuba.photo.attach(io: file_scuba, filename: 'scuba-diving_l3pajf.png', content_type: 'image/jpg')
+
+file_surf = URI.open("https://res.cloudinary.com/dowj44v2p/image/upload/v1711031023/surfing_r2hn7n.png")
+surf = Hobby.create!(name: "Surf")
+surf.photo.attach(io: file_surf, filename: 'surfing_r2hn7n.png', content_type: 'image/jpg')
+
+file_skating = URI.open("https://res.cloudinary.com/dowj44v2p/image/upload/v1711031220/ice-skating_trh7vd.png")
+skating = Hobby.create!(name: "Ice Skating")
+skating.photo.attach(io: file_skating, filename: 'ice-skating_trh7vd.png', content_type: 'image/jpg')
+
+file_gardening = URI.open("https://res.cloudinary.com/dowj44v2p/image/upload/v1711031366/gardening_wuzdqp.png")
+gardening = Hobby.create!(name: "Gardening")
+gardening.photo.attach(io: file_gardening, filename: 'gardening_wuzdqp.png', content_type: 'image/jpg')
+
 
 puts "Seeding hobbies completed"
 
 puts "Seeding users..."
+
+20.times do
+  username = Faker::Name.first_name.downcase.gsub(/\W/, '')
+  address = Faker::Address.city
+
+  file_avatar = URI.open(Faker::Avatar.image)
+
+  user = User.create!(
+    username: username.capitalize,
+    birthdate: Faker::Date.birthday(min_age: 18, max_age: 45),
+    bio: "Hello, I am #{username.capitalize} from #{address.capitalize}! I would like to meet new friends who share my hobbies",
+    email: "#{username}@gmail.com",
+    password: "123456",
+    location: address,
+  )
+
+  user.photo.attach(io: file_avatar, filename: "#{username}_avatar.jpg", content_type: 'image/jpg')
+end
 
 User.create!(
   username:"PeterP",
@@ -144,6 +199,20 @@ User.create!(
 )
 
 puts "Seeding users completed!"
+
+puts "Seeding users..."
+
+User.all.each do |user|
+  hobby_ids = Hobby.pluck(:id).sample(6).uniq
+
+  hobby_ids.each do |hobby_id|
+    SelectedHobby.create!(user_id: user.id, hobby_id: hobby_id)
+  end
+end
+
+
+puts "Seeding selected-hobbies completed!"
+
 
 puts "Seeding events..."
 
