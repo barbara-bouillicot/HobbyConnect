@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="icon-bar">
-<%= link_to root_path do %>
+<%= link_to user_path(current_user) do %>
   <i class="fa-solid fa-user"></i>
 <% end %>
 
@@ -11,7 +11,7 @@
 <% end %>
 
 <%= link_to '/hobbies' do %>
-  <%= image_tag "HobbyHubPurple.png" %>
+  <%= image_tag "HobbyHubBig.png" %>
 <% end %>
 
 <%= link_to '/events' do %>
