@@ -1,10 +1,20 @@
 <div class="container">
 
-
-<div class="container d-flex justify-content-between">
-  <div class="img-profile w-50">
-
-  <h1><%= @user.username %></h1>
+<div class="d-flex justify-content-between m-3">
+ <% if @user == current_user %>
+    <h3>My profile</h3>
+    <div class="d-flex justify-content-evenly w-25">
+      <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, style: "text-decoration: none" do %>
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <% end %>
+      <%= link_to edit_registration_path(current_user) do %>
+      <i class="fa-solid fa-user-pen"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<div class="container d-flex justify-content-between mt-3">
+  <div class="img-profile w-50 mb-5">
 
   <% if @user.photo.attached? %>
     <%= cl_image_tag(@user.photo.key, class: "avatar-large") %>
@@ -13,7 +23,7 @@
 <div class="hobbies-profile d-flex justify-content-between flex-wrap w-50" data-controller="matching-modal">
   <% @hobbies.each do |hobby| %>
     <% if hobby.photo.attached? && @user != current_user && current_user.hobbies.include?(hobby) %>
-      <div class="icon-container">
+      <div class="icon-container icons-selected">
         <%= link_to "#", data: { bs_toggle: "modal", bs_target: "#chatroomAddModal", action: "click->matching-modal#copy"} do %>
               <%= cl_image_tag(hobby.photo.key, class: "hobby-icons", data: { matching_modal_target: "link" }) %>
         <% end %>
@@ -31,17 +41,12 @@
   <% age = Date.today.year - @user.birthdate.year %>
   <% age -= 1 if Date.today.strftime("%m%d") < @user.birthdate.strftime("%m%d") %>
   <p>Age: <%= age %></p>
-  <p>Location: <%= @user.location %></p>
-  <p>Bio: <%= @user.bio %></p>
-  <p>Selected hobbies: </p>
-  <% @hobbies.each do |hobby| %>
-  <p><%= hobby.name %></p>
-  <% if hobby.photo.attached? %>
-  <div class="icon-container">
-    <%= cl_image_tag hobby.photo.key, class: "hobby-icons" %>
-  </div>
-  <% end %>
-<% end %>
+
+  <p><i class="fa-solid fa-location-dot"></i> <%= @user.location %></p>
+  <div class="separation-line mb-3"></div>
+    <p><%= @user.bio %></p>
+  <div class="separation-line mb-3"></div>
+ 
   <p>Created Events: </p>
   <% if @user == current_user %>
     <div>
@@ -71,9 +76,6 @@
         </div>
       <% end %>
     <% end %>
-  <% end %>
-  <% if @user == current_user %>
-    <%= link_to "edit", edit_registration_path(current_user) %>
   <% end %>
 
 </div>
