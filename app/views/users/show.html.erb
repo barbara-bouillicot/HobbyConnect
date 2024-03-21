@@ -1,9 +1,33 @@
 <div class="container">
 
+
+<div class="container d-flex justify-content-between">
+  <div class="img-profile w-50">
+
   <h1><%= @user.username %></h1>
+
   <% if @user.photo.attached? %>
-  <%= cl_image_tag(@user.photo.key, class: "avatar")%>
+    <%= cl_image_tag(@user.photo.key, class: "avatar-large") %>
   <% end %>
+</div>
+<div class="hobbies-profile d-flex justify-content-between flex-wrap w-50" data-controller="matching-modal">
+  <% @hobbies.each do |hobby| %>
+    <% if hobby.photo.attached? && @user != current_user && current_user.hobbies.include?(hobby) %>
+      <div class="icon-container">
+        <%= link_to "#", data: { bs_toggle: "modal", bs_target: "#chatroomAddModal", action: "click->matching-modal#copy"} do %>
+              <%= cl_image_tag(hobby.photo.key, class: "hobby-icons", data: { matching_modal_target: "link" }) %>
+        <% end %>
+        <%= render "chatrooms/new", chatroom: @chatroom %>
+      </div>
+    <% else %>
+      <div class="icon-container">
+        <%= cl_image_tag hobby.photo.key, class: "hobby-icons" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+</div>
+  <h1><%= @user.username %></h1>
   <% age = Date.today.year - @user.birthdate.year %>
   <% age -= 1 if Date.today.strftime("%m%d") < @user.birthdate.strftime("%m%d") %>
   <p>Age: <%= age %></p>
@@ -33,7 +57,7 @@
     <div class="modal fade" id="eventDetailModal<%= event.id %>" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true" data-controller="edit-event">
       <%= render "events/event_modal", event: event%>
     </div>
-  <% end %>
+   <% end $>
   </ul>
   <% if @user == current_user %>
     <p>Accepted Events:</p>
@@ -52,5 +76,5 @@
     <%= link_to "edit", edit_registration_path(current_user) %>
   <% end %>
 
-
+</div>
 </div>

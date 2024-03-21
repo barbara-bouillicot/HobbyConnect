@@ -22,7 +22,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :chatrooms, only: [:index]
+  resources :chatrooms, only: [:index, :show, :new, :create, :update] do
+    resources :messages, only: [:create]
+  end
+
 
   resources :hobbies, only: [:index, :show]
 

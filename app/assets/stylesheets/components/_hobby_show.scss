@@ -1,32 +1,78 @@
 .hobby-show-card-container {
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #d5aaff;
+  width: 370px;
+  margin: 5px;
+  margin-left: 9px;
+  margin-top: 0;
+  padding: 5px;
+  box-shadow: 0 0 10px #1c1c1c;
+  border-radius: 4px;
+  background-color: #25245e;
 }
 
 .hobby-show-top {
-  background-color: #d7ff81;
-  color: #3d3b8e;
-  width: 160px;
+  width: 350px;
+  padding: 10px;
+  color: white;
+  height: 110px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  margin: 5px;
-  padding: 5px;
 }
 
-.hobby-show-top h2 {
+.hobby-show-top h1 {
   margin: 0;
   font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 .hobby-show-card-body {
-  align-items: start;
+  text-align: center;
+  color:white;
+  margin-top: 5px;
+}
+
+.hobby-show-top-icon {
+  background-color: #d7ff81;
+  border-radius: 6px;
+  padding: 5px;
+  box-shadow: 0 0 10px #1c1c1c;
+}
+
+.hobby-show-card-body h3 {
+  font-weight: bold;
 }
 
 .hobby-show-card-body a {
   color: #ff4365;
   font-weight: bold;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  text-decoration: none;
+
+}
+
+.hobby-show-top-text {
+  text-align: center;
+  width: 100%;
+}
+
+.hobby-show-button, .hobby-show-button:visited, .hobby-show-button:hover {
+  color:white;
+  background-color: #ff4365;
+  border-radius: 10px;
+  padding: 5px;
+  font-weight: bold;
+  border-color: white;
+  box-shadow: 0 4px #999;
+  margin-bottom: 3px;
+}
+
+.hobby-show-button:active {
+  background-color: #bf304a;
+  box-shadow: 0 1px #666;
+  transform: translateY(4px);
 }
