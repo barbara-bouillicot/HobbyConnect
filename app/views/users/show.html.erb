@@ -1,36 +1,55 @@
 <div class="container">
+
+
+<div class="container d-flex justify-content-between">
+  <div class="img-profile w-50">
+
   <h1><%= @user.username %></h1>
+
   <% if @user.photo.attached? %>
-  <%= cl_image_tag(@user.photo.key, class: "avatar")%>
+    <%= cl_image_tag(@user.photo.key, class: "avatar-large") %>
   <% end %>
+</div>
+<div class="hobbies-profile d-flex justify-content-between flex-wrap w-50">
+  <% @hobbies.each do |hobby| %>
+    <% if hobby.photo.attached? %>
+      <div class="icon-container">
+        <%= link_to "#", data: { bs_toggle: "modal", bs_target: "#chatroomAddModal"} do %>
+          <%= cl_image_tag hobby.photo.key, class: "hobby-icons" %>
+        <% end %>
+        <%= render "chatrooms/new", chatroom: @chatroom %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+</div>
+  <h1><%= @user.username %></h1>
   <% age = Date.today.year - @user.birthdate.year %>
   <% age -= 1 if Date.today.strftime("%m%d") < @user.birthdate.strftime("%m%d") %>
   <p>Age: <%= age %></p>
   <p>Location: <%= @user.location %></p>
   <p>Bio: <%= @user.bio %></p>
-  <p>Selected hobbies: </p>
-  <% @hobbies.each do |hobby| %>
-  <% if hobby.photo.attached? %>
-  <div class="icon-container">
-    <%= cl_image_tag hobby.photo.key, class: "hobby-icons" %>
-  </div>
-  <p><%= hobby.name %></p>
-  <% end %>
-<% end %>
+
+
   <p>Events: </p>
   <% if @user == current_user %>
     <button data-bs-toggle="modal" data-bs-target="#eventAddModal">Add</button>
-      <%= render "events/new", event: @event %>
-    <% end %>
-  <ul>
-  <% @events.each do |event| %>
-    <div class="event-card" data-bs-toggle="modal" data-bs-target="#eventDetailModal<%= event.id %>">
-      <%= event.hobby_id%> | <%= event.name%> | <%= event.location%> | <%= event.date %>
-    </div>
-    <%= render "events/show", event: event%>
+    <%= render "events/new", event: @event %>
   <% end %>
+
+  <ul>
+    <% @events.each do |event| %>
+      <div class="event-card" data-bs-toggle="modal" data-bs-target="#eventDetailModal<%= event.id %>">
+        <%= event.hobby_id %> | <%= event.name %> | <%= event.location %> | <%= event.date %>
+      </div>
+      <%= render "events/show", event: event %>
+    <% end %>
   </ul>
+
   <% if @user == current_user %>
     <%= link_to "edit", edit_registration_path(current_user) %>
   <% end %>
+
 </div>
+</div>
+

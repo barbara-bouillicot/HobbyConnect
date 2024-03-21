@@ -1,0 +1,26 @@
+<div class="modal fade" id="chatroomAddModal" tabindex="-1" aria-labelledby="chatroomAddModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="chatroomAddModalLabel">Connect?</h5>
+          </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="modal-body">
+            <div class="d-flex justify-content-center">
+            <% if @user.photo.attached? %>
+                <%= cl_image_tag(@user.photo.key, class: "avatar-large") %>
+              <% end %>
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag(current_user.photo.key, class: "avatar-large") %>
+              <% end %>
+            </div>
+            <%= simple_form_for @chatroom do |f| %>
+              <%= f.hidden_field :name, value: "TEST" %>
+              <%= f.hidden_field :asker_id, value: current_user.id %>
+              <%= f.hidden_field :receiver_id, value: @user.id %>
+              <%= f.submit class:"btn btn-form", value: "Confirm"%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>

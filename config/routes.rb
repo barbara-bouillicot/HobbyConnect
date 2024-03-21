@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   resources :events, only: [:index, :new, :create, :edit, :update]
 
-  resources :chatrooms, :events, only: [:index]
+  resources :chatrooms, only: [:index, :show, :new, :create, :update] do
+    resources :messages, only: [:create]
+  end
 
   resources :hobbies, only: [:index, :show]
 
