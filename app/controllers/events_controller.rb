@@ -25,7 +25,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to user_path(current_user), notice: 'Event was successfully created.'
     else
-      render :new, status: :unprocessable_entity
+      render "new", status: :unprocessable_entity
     end
   end
 

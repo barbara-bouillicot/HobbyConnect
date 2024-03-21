@@ -57,7 +57,7 @@
     <div class="modal fade" id="eventDetailModal<%= event.id %>" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true" data-controller="edit-event">
       <%= render "events/event_modal", event: event%>
     </div>
-   <% end $>
+   <% end %>
   </ul>
   <% if @user == current_user %>
     <p>Accepted Events:</p>
@@ -69,7 +69,7 @@
         <div class="modal fade" id="eventDetailModal<%= request.event.id %>" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true" data-controller="edit-event">
           <%= render "events/event_modal", event: request.event %>
         </div>
-        <% end %>
+      <% end %>
     <% end %>
   <% end %>
   <% if @user == current_user %>
