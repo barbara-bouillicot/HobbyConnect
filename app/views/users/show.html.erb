@@ -12,12 +12,16 @@
 </div>
 <div class="hobbies-profile d-flex justify-content-between flex-wrap w-50">
   <% @hobbies.each do |hobby| %>
-    <% if hobby.photo.attached? %>
+    <% if hobby.photo.attached? && @user != current_user && current_user.hobbies.include?(hobby) %>
       <div class="icon-container">
         <%= link_to "#", data: { bs_toggle: "modal", bs_target: "#chatroomAddModal"} do %>
           <%= cl_image_tag hobby.photo.key, class: "hobby-icons" %>
         <% end %>
         <%= render "chatrooms/new", chatroom: @chatroom %>
+      </div>
+    <% else %>
+      <div class="icon-container">
+        <%= cl_image_tag hobby.photo.key, class: "hobby-icons" %>
       </div>
     <% end %>
   <% end %>
@@ -52,4 +56,3 @@
 
 </div>
 </div>
-
