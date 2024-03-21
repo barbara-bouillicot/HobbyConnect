@@ -33,23 +33,45 @@
   <p>Age: <%= age %></p>
   <p>Location: <%= @user.location %></p>
   <p>Bio: <%= @user.bio %></p>
-
-
-  <p>Events: </p>
+  <p>Selected hobbies: </p>
+  <% @hobbies.each do |hobby| %>
+  <p><%= hobby.name %></p>
+  <% if hobby.photo.attached? %>
+  <div class="icon-container">
+    <%= cl_image_tag hobby.photo.key, class: "hobby-icons" %>
+  </div>
+  <% end %>
+<% end %>
+  <p>Created Events: </p>
   <% if @user == current_user %>
-    <button data-bs-toggle="modal" data-bs-target="#eventAddModal">Add</button>
+    <div>
+      <button data-bs-toggle="modal" data-bs-target="#eventAddModal">Add</button>
+    </div>
     <%= render "events/new", event: @event %>
   <% end %>
-
   <ul>
-    <% @events.each do |event| %>
-      <div class="event-card" data-bs-toggle="modal" data-bs-target="#eventDetailModal<%= event.id %>">
-        <%= event.hobby_id %> | <%= event.name %> | <%= event.location %> | <%= event.date %>
-      </div>
-      <%= render "events/show", event: event %>
-    <% end %>
+  <% @events.each do |event| %>
+    <div class="event-card" data-bs-toggle="modal" data-bs-target="#eventDetailModal<%= event.id %>">
+      <%= event.hobby_id%> | <%= event.name%> | <%= event.location%> | <%= event.date %>
+    </div>
+    <div class="modal fade" id="eventDetailModal<%= event.id %>" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true" data-controller="edit-event">
+      <%= render "events/event_modal", event: event%>
+    </div>
+   <% end $>
   </ul>
-
+  <% if @user == current_user %>
+    <p>Accepted Events:</p>
+    <% @requests.each do |request| %>
+      <% if request.accepted?%>
+        <div class="event-card" data-bs-toggle="modal" data-bs-target="#eventDetailModal<%= request.event.id %>">
+        <%= request.event.name%>
+        </div>
+        <div class="modal fade" id="eventDetailModal<%= request.event.id %>" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true" data-controller="edit-event">
+          <%= render "events/event_modal", event: request.event %>
+        </div>
+        <% end %>
+    <% end %>
+  <% end %>
   <% if @user == current_user %>
     <%= link_to "edit", edit_registration_path(current_user) %>
   <% end %>

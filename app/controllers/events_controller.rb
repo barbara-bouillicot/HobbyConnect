@@ -9,6 +9,12 @@ class EventsController < ApplicationController
     end
   end
 
+  def show
+    @event = Event.find(params[:id])
+    @request = Request.new
+    @requests = @event.requests
+  end
+
   def new
     @event = Event.new
   end
@@ -17,7 +23,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = current_user
     if @event.save
-      redirect_to users_path(current_user)
+      redirect_to user_path(current_user), notice: 'Event was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,8 +36,17 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.update(event_params)
-    redirect_to user_path(current_user)
+    respond_to do |format|
+      format.html { redirect_to user_path(current_user) }
+      format.text { render partial: "events/event_modal", locals: {event: @event}, formats: [:html] }
+    end
 
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to user_path(current_user), notice: "Event successfully deleted!"
   end
 
   private

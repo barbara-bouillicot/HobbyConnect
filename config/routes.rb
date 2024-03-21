@@ -13,11 +13,19 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :index]
 
-  resources :events, only: [:index, :new, :create, :edit, :update]
+  resources :events, only: [:index, :new, :create, :edit, :update, :show, :destroy] do
+    resources :requests, only: [:new, :destroy] do
+      member do
+        patch :accept, to: "requests#accept", as: :accept_request
+        patch :reject, to: "requests#reject", as: :reject_request
+      end
+    end
+  end
 
   resources :chatrooms, only: [:index, :show, :new, :create, :update] do
     resources :messages, only: [:create]
   end
+
 
   resources :hobbies, only: [:index, :show]
 
