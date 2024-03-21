@@ -1,15 +1,34 @@
-// Graphical variables
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
 
-// External libraries
 @import "bootstrap";
 @import "font-awesome";
 
-// Your CSS partials
 @import "components/index";
 @import "pages/index";
 @import "components/header";
 @import "components/navbar";
-@import "components/searchbar"
+@import "components/searchbar";
+
+body {
+  background-color: #3d3b8e ;
+}
+
+.btn {
+  background-color: #d7ff81;
+  color: #3d3b8e;
+  margin-bottom: 5px;
+  border-radius: 14px;
+  text-decoration: none;
+  width: 100px;
+  height: 35px;
+}
+
+.btn2 {
+  
+}
+.btn:hover {
+  color: #d5aaff;
+
+}

@@ -4,12 +4,18 @@
   width: 100%;
   height: 65px;
   display: flex;
-  justify-content: left;
+  justify-content:space-between;
   align-items: center;
   margin-bottom: 10px;
 }
 
 .logo {
+  padding: 2px;
+  height: auto;
+  margin: 10px;
+}
+
+.hobbyhub-icon {
   padding: 2px;
   height: auto;
   margin: 10px;

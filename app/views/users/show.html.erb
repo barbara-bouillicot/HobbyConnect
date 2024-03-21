@@ -1,7 +1,11 @@
 <div class="container">
 
+
 <div class="container d-flex justify-content-between">
   <div class="img-profile w-50">
+
+  <h1><%= @user.username %></h1>
+
   <% if @user.photo.attached? %>
     <%= cl_image_tag(@user.photo.key, class: "avatar-large") %>
   <% end %>
@@ -45,4 +49,7 @@
   <% if @user == current_user %>
     <%= link_to "edit", edit_registration_path(current_user) %>
   <% end %>
+
 </div>
+</div>
+
