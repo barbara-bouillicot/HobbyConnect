@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :user
-  has_one :hobby
+  belongs_to :hobby
   has_many :requests
 
   validates :name, :date, :description, :location, presence: true

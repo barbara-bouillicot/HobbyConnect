@@ -1,26 +1,27 @@
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <div class="icon-bar">
-<%= link_to user_path(current_user) do %>
-  <i class="fa-solid fa-user"></i>
-<% end %>
+  <% if user_signed_in? %>
+    <%= link_to user_path(current_user) do %>
+      <i class="fa-solid fa-user"></i>
+    <% end %>
+  <% else %>
+    <%= link_to  new_user_session_path do %>
+      <i class="fa-solid fa-user"></i>
+    <% end %>
+  <% end %>
 
-<%= link_to '/chatrooms' do %>
-  <i class="fa fa-comments"></i>
-<% end %>
+  <%= link_to '/chatrooms' do %>
+    <i class="fa fa-comments"></i>
+  <% end %>
 
-<%= link_to '/hobbies' do %>
-  <%= image_tag "HobbyHubBig.png" %>
-<% end %>
+  <%= link_to '/hobbies' do %>
+    <%= image_tag "HobbyHubBig.png" %>
+  <% end %>
 
-<%= link_to '/events' do %>
-  <i class="fa-solid fa-calendar-check"></i>
-<% end %>
+  <%= link_to '/events' do %>
+    <i class="fa-solid fa-calendar-check"></i>
+  <% end %>
 
   <%= link_to '/users' do %>
     <i class="fa-solid fa-people-group"></i>
   <% end %>
-
-
 </div>

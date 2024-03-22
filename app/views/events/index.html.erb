@@ -1,6 +1,5 @@
-<div class="container">
+<div class="event-index-container">
   <h1 style="font-family: 'Blueberry', sans-serif; color: #d5aaff;">All events</h1>
-
 
   <%= form_tag events_path, method: :get, class: "search-bar" do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Events", class: "search-input" %>
@@ -9,17 +8,17 @@
     <% end %>
   <% end %>
 
-
-<% @events.each do |event| %>
-
+  <% @events.each do |event| %>
     <div class="event-card" data-bs-toggle="modal" data-bs-target="#eventDetailModal<%= event.id %>">
-      <h2><%= event.name %></h2>
+    <div class="event-hobby-icon-bg">
+    <% if event.hobby && event.hobby.photo.attached? %>
+    <%= cl_image_tag event.hobby.photo.key, class: "event-hobby-icon" %>
+  <% end %>
+    </div>
+      <h2 class="event-details"><%= event.name %></h2>
       <p><%= event.location %></p>
       <p><%= event.date %></p>
     </div>
-    <%= render "events/show", event: event%>
-
-
+    <%= render "events/show", event: event %>
   <% end %>
-
 </div>
