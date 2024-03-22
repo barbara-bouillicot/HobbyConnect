@@ -30,6 +30,22 @@ class User < ApplicationRecord
     chatrooms_as_asker + chatrooms_as_receiver
   end
 
+  def has_request?(event)
+    Request.find_by(user: self, event: event)
+  end
+
+  def has_pending_request?(event)
+    Request.find_by(user: self, event: event)&.pending?
+  end
+
+  def has_rejected_request?(event)
+    Request.find_by(user: self, event: event)&.rejected?
+  end
+
+  def has_accepted_request?(event)
+    Request.find_by(user: self, event: event)&.accepted?
+  end
+
   private
 
   def validate_age
