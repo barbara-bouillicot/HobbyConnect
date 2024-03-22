@@ -1,17 +1,18 @@
-import { Controller } from "@hotwired/stimulus"
+// added the logic in the hobby-selection-controller instead
 
-// Connects to data-controller="toggle-icons"
-export default class extends Controller {
-  static targets = ["checkbox", "icon", "name"]
 
-  connect() {
-    console.log("hello from the toggle controller")
-  }
+// import { Controller } from "@hotwired/stimulus";
 
-  toggle() {
-    console.log(this.checkboxTargets)
-    this.iconTarget.classList.toggle("icons-selected");
-    this.nameTarget.classList.toggle("icons-selected-name");
+// export default class extends Controller {
+//   static targets = ["checkbox", "icon", "name"];
 
-   }
-  }
+//   connect() {
+//     console.log("hello from the toggle controller");
+//   }
+
+//   toggle() {
+//     console.log("hey from toggle action")
+//     this.iconTarget.classList.toggle("icons-selected");
+//     this.nameTarget.classList.toggle("icons-selected-name");
+//   }
+// }
