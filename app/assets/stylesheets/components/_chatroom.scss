@@ -1,5 +1,5 @@
 .chatroom {
-  background: white;
+  background: rgba(247, 164, 247, 0.3);
   margin-top: 9px;
   height: calc(100vh - 75px);
   display: flex;
@@ -27,4 +27,39 @@
       margin-bottom: 0;
     }
   }
+}
+
+
+.asker-message {
+  max-width: 75%;
+  background-color: rgb(249, 167, 223);
+  border-radius: 30px;
+  text-align: right;
+  margin-left: 84px;
+  padding: 10px;
+  word-wrap: break-word;
+  margin-top: 15px;
+
+
+  .message-content {
+    padding-right: 20px;
+  }
+}
+
+.receiver-message {
+  max-width: 75%;
+  background-color: rgb(214, 48, 161);
+  border-radius: 30px;
+  text-align: left;
+  padding: 10px;
+  word-wrap: break-word;
+  margin-top: 15px;
+
+  .message-content {
+    padding-left: 20px;
+  }
+}
+
+#message_content{
+  border-radius: 10px;
 }

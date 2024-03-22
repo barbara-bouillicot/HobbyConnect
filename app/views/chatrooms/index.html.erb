@@ -1,6 +1,5 @@
 <div class="container">
-
-<h1 style="font-family: 'Blueberry', sans-serif; color: #d5aaff;">Chatrooms</h1>
+  <h1 style="font-family: 'Blueberry', sans-serif; color: #d5aaff;">Chatrooms</h1>
 
   <%= form_tag chatrooms_path, method: :get, class: "search-bar" do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Buddies", class: "search-input" %>
@@ -10,18 +9,23 @@
   <% end %>
 
   <div class="chatrooms d-flex align-items-start flex-column w-100">
-    <% @chatrooms.each do |chatroom| %>
-      <div class="container-chatroom d-flex align-items-center ">
+    <% @chatrooms.select { |chatroom| chatroom.asker == current_user || chatroom.receiver == current_user }.each do |chatroom| %>
+      <div class="container-chatroom d-flex align-items-center">
+        <% if chatroom.receiver == current_user %>
+          <% user = chatroom.asker %>
+        <% else %>
+          <% user = chatroom.receiver %>
+        <% end %>
+
         <div class="avatar-container m-3">
-          <% if chatroom.asker.photo.attached? && chatroom.asker != current_user && chatroom.status != "rejected"%>
-            <%= cl_image_tag(chatroom.asker.photo.key, class: "avatar") %>
-          <% elsif chatroom.receiver.photo.attached? && chatroom.asker == current_user  && chatroom.status != "rejected"%>
-            <%= cl_image_tag(chatroom.receiver.photo.key, class: "avatar") %>
+          <% if user.photo.attached? && chatroom.status != "rejected" %>
+            <%= cl_image_tag(user.photo.key, class: "avatar") %>
           <% end %>
         </div>
+
         <div class="details-container mt-3">
-          <% if chatroom.pending? && chatroom.asker != current_user %>
-            <%= chatroom.asker.username %>
+          <% if chatroom.pending? && chatroom.receiver == current_user %>
+            <%= user.username %>
             <%= simple_form_for chatroom do |f| %>
               <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
               <%= f.submit "✔️", class: "button-cleanup btn-sm"%>
@@ -35,11 +39,14 @@
             <em><%= "Waiting for #{chatroom.receiver.username} to confirm the connection" %></em>
           <% end %>
         </div>
+
         <div class="links-container">
-          <% if chatroom.status == "accepted" && chatroom.asker != current_user  %>
-            <%= link_to chatroom.asker.username, chatroom_path(chatroom) %>
-          <% elsif chatroom.status == "accepted" && chatroom.asker == current_user %>
-            <%= link_to chatroom.receiver.username, chatroom_path(chatroom) %>
+          <% if chatroom.status == "accepted" %>
+            <% if chatroom.asker == current_user %>
+              <%= link_to chatroom.receiver.username, chatroom_path(chatroom) %>
+            <% else %>
+              <%= link_to chatroom.asker.username, chatroom_path(chatroom) %>
+            <% end %>
           <% end %>
         </div>
       </div>
