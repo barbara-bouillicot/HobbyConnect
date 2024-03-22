@@ -21,7 +21,7 @@
             <p>Waiting for acceptance</p>
           <% elsif current_user.has_accepted_request?(event) %>
             <p>Already attending</p>
-            <%= link_to "Delete", event_request_path(event_id: event.id, id: Request.find_by(event_id: event, user_id: params[:id]).id) || root_path, data: {turbo_confirm: "Are you sure?", turbo_method: :delete}, class: "btn btn-primary" %>
+            <%= link_to "Delete", event_request_path(event_id: event.id, id: current_user.requests.find_by(event_id: event.id)&.id) || root_path, data: {turbo_confirm: "Are you sure?", turbo_method: :delete}, class: "btn btn-primary" %>
           <% elsif current_user.has_rejected_request?(event) %>
             <p>Sorry, we're full</p>
           <% end %>

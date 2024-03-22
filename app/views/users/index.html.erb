@@ -14,9 +14,7 @@
         <div class="avatar-link">
           <%= link_to user_path(user) do %>
             <% if user.photo.attached? %>
-              <%= image_tag rails_blob_url(user.photo), class: "avatar bigger-avatar" %>
-            <% else %>
-              <%= image_tag "default_avatar.jpg", class: "avatar bigger-avatar" %>
+              <%= cl_image_tag(user.photo.key, class: "avatar-large") %>
             <% end %>
           <% end %>
         </div>
