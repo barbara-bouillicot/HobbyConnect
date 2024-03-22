@@ -12,6 +12,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @event = Event.new
     @events = @user.events
+    @requests = Request.where(user_id: current_user.id)
     @hobbies = @user.hobbies
+    @chatroom = Chatroom.new
   end
 end

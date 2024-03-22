@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>All users</h1>
+  <h1 style="font-family: 'Blueberry', sans-serif; color: #d5aaff;">All users</h1>
 
   <%= form_tag users_path, method: :get, class: "searchbar" do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "search-input" %>
@@ -10,12 +10,12 @@
 
 
   <% @users.each do |user| %>
-
+   <% if user != current_user %>
     <div class="user-card">
       <h2><%= link_to user.username, user_path(user) %></h2>
       <h3>Hobbies: X X X X X </h3>
     </div>
-
+    <% end %>
   <% end %>
 
 </div>

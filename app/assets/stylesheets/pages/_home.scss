@@ -1,3 +1,17 @@
-body {
-  background-color: #3d3b8e ;
+.homepagebuttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btn {
+  padding: 5px 5px;
+  background-color: #25245e;
+  color: #d5aaff;
+  border: none;
+  border-radius: 15px;
+  text-decoration: none;
+  width: 90px;
+  height: 50px;
+  margin: 10px;
 }

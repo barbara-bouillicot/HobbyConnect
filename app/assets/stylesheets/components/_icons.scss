@@ -7,6 +7,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  a{
+    text-align: center;
+  }
 }
 
 .hobby-icons{
@@ -64,4 +68,9 @@ input[type="checkbox"] {
 
 .icons-selected-name{
   font-weight: bold;
+}
+
+.test{
+  color: Black;
+  width: 70px;
 }

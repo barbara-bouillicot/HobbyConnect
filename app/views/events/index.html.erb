@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>All events</h1>
+  <h1 style="font-family: 'Blueberry', sans-serif; color: #d5aaff;">All events</h1>
 
 
   <%= form_tag events_path, method: :get, class: "search-bar" do %>
@@ -17,8 +17,9 @@
       <p><%= event.location %></p>
       <p><%= event.date %></p>
     </div>
-    <%= render "events/show", event: event%>
-
+     <div class="modal fade" id="eventDetailModal<%= event.id %>" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true" data-controller="edit-event">
+    <%= render "events/event_modal", event: event%>
+    </div>
 
   <% end %>
 

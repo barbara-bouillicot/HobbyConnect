@@ -1,0 +1,62 @@
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eventDetailModalLabel<%= event.id %>" data-model-title="<%= event.name %>"><%= event.name %></h5>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body event-infos" data-edit-event-target="infos">
+        <p><%= event.location %></p>
+        <p><%= event.date %></p>
+        <p><%= event.description %></p>
+        <p><%= event.user.username%></p>
+
+      </div>
+      <div class="modal-footer">
+        <% if current_user != event.user %>
+          <% if !current_user.has_request?(event) %>
+            <%= link_to "I'm Interested", new_event_request_path(event), remote: true, method: :get%>
+          <% elsif current_user.has_pending_request?(event) %>
+            <p>Waiting for acceptance</p>
+          <% elsif current_user.has_accepted_request?(event) %>
+            <p>Already attending</p>
+            <%= link_to "Delete", event_request_path(event_id: event.id, id: Request.find_by(event_id: event, user_id: params[:id]).id) || root_path, data: {turbo_confirm: "Are you sure?", turbo_method: :delete}, class: "btn btn-primary" %>
+          <% elsif current_user.has_rejected_request?(event) %>
+            <p>Sorry, we're full</p>
+          <% end %>
+        <% else %>
+          <button data-action="click->edit-event#displayForm" data-edit-event-target="editButton">Edit</button>
+          <%= link_to "Delete", event_path(event), data: {turbo_confirm: "Are you sure?", turbo_method: :delete}, class: "btn btn-primary" %>
+          <% event.requests.each do |request| %>
+            <% if request.pending? %>
+              <p>Interested:</p>
+              <p><%= request.user.username %></p>
+              <div>
+                <%= button_to "accept", accept_request_event_request_path(event, request), method: :patch, class: "btn btn-success" %>
+                <%= button_to "reject", reject_request_event_request_path(event, request), method: :patch, class: "btn btn-danger" %>
+              </div>
+            <% elsif request.accepted? && !request.rejected?%>
+              <p>Attending:</p>
+              <% event.requests.each do |request| %>
+                <% if request.accepted? && !request.rejected?%>
+                  <%= request.user.username %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="container">
+        <%= simple_form_for event, html: { class: "d-none", data: { edit_event_target: "form", action: "submit->edit-event#update" } } do |f| %>
+          <%= f.input :hobby_id %>
+          <%= f.input :name %>
+          <%= f.input :location %>
+          <%= f.input :date, as: :string, input_html: { data: { controller: "datepicker" } } %>
+          <%= f.input :description %>
+          <%= f.submit class: "btn btn-form", value: "Save" %>
+        <% end %>
+      </div>
+    </div>
+  </div>

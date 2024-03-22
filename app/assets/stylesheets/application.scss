@@ -10,3 +10,31 @@
 @import "components/header";
 @import "components/navbar";
 @import "components/searchbar";
+
+body {
+  background-color: #3d3b8e;
+}
+
+.btn {
+  background-color: #d7ff81;
+  color: #3d3b8e;
+  margin-bottom: 5px;
+  border-radius: 14px;
+  text-decoration: none;
+  width: 100px;
+  height: 35px;
+}
+
+.btn:hover {
+  color: #d5aaff;
+}
+
+.fa-user-pen, .fa-right-from-bracket{
+  color:#d5aaff;
+}
+
+.separation-line{
+  width: 100%;
+  height: 3px;
+  background-color:black;
+}
