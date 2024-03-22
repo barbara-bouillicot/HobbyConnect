@@ -15,8 +15,8 @@
       <h4><%= link_to user.username, user_path(user) %></h4>
           <%= link_to user_path(user) do %>
             <% if user.photo.attached? %>
-            <%= cl_image_tag(user.photo.key, class: "avatar-large") %>
-          <% end %>
+              <%= cl_image_tag(user.photo.key, class: "avatar-large") %>
+            <% end %>
           <% end %>
         </div>
         <div class="user-details">

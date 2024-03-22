@@ -18,8 +18,6 @@ export default class extends Controller {
       .then(response => response.text())
       .then((data) => {
         this.element.innerHTML = data
-        console.log(data)
-        console.log(this.element)
       })
   }
 
