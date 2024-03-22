@@ -5,7 +5,8 @@
 }
 
 .hobby-hub-card {
-  background-color: #d7ff81;
+  border-color: rgb(136, 136, 136);
+  box-shadow: 0 0 3px #474747;
   height: 100px;
   width: 80px;
   display: flex;
@@ -13,7 +14,6 @@
   align-items: center;
   margin: 5px;
   padding: 5px;
-  box-shadow: 0 0 10px #1c1c1c;
   border-radius: 4px;
 }
 

@@ -1,32 +1,43 @@
-.icon-bar {
+.nav-wrapper {
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
-  height: 8%;
-  background-color: #25245e;
+  display: flex;
+  justify-content: center; /* Center the navbar horizontally */
+}
+
+.icon-bar {
+  background: linear-gradient(rgb(152, 90, 228), rgb(160, 133, 206));
+  width: 98%;
+  height: 75px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:0 5%;
-  margin: auto;
-  left: 0;
+  padding: 0 5%;
+  border-radius: 25px;
+  margin-bottom: 5px;
 }
 .icon-bar a {
   display: inline-block;
   transition: all 0.3s ease;
-  color: #d5aaff;
+  color: #faeffd;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0);
   font-size: 32px;
   margin: 0;
+  padding: 5px;
 }
 
-.icon-bar a:hover,
 .icon-bar a.active {
-  background-color: #4b4aa9;
+  background: linear-gradient(rgb(175, 137, 223), rgb(204, 173, 229));
   padding: 10px 31px;
 }
 
 .icon-bar img {
   width: 95px;
   height: 95px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+  background: linear-gradient(rgb(152, 90, 228), rgb(173, 133, 206));
+  border-radius: 50px;
+  padding: 5px;
 }
