@@ -1,37 +1,71 @@
+
 .hobby-show-card-container {
-  display: inline-block;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
-  width: 370px;
-  margin: 5px;
-  margin-left: 9px;
-  margin-top: 0;
-  padding: 5px;
+  width: 100%;
+  margin:0;
+  padding:0;
+}
+
+.card-left {
+  display: flex;
+  background-color: white;
+  color:black;
+  width: 80%;
+  align-self: flex-start;
+  border-radius: 0 10px 10px 0;
+  margin-top: 8px;
+  flex-direction: column;
+  margin-left: 0;
+  margin-right: auto;
   box-shadow: 0 0 10px #1c1c1c;
-  border-radius: 4px;
-  background-color: #25245e;
+}
+
+.card-right {
+  display: flex;
+    background-color: white;
+    color:black;
+    width: 80%;
+    align-self: flex-end;
+    border-radius: 10px 0 0 10px;
+    margin-top: 8px;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: 0;
+    box-shadow: 0 0 10px #1c1c1c;
 }
 
 .hobby-show-top {
-  width: 350px;
-  padding: 10px;
+  width: 100%;
   color: white;
-  height: 110px;
+  height: auto;
   display: flex;
   align-items: center;
+  align-self: flex-end;
+  margin-left: auto;
+  margin-right: 0;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+hr.rounded {
+  border-top: 8px solid #1c1c1c;
+  border-radius: 5px;
+  margin: 5px;
 }
 
 .hobby-show-top h1 {
-  margin: 0;
+  margin-bottom: 10px;
+  font-family: "Hachi Maru Pop", cursive;
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  font-style: normal;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  color: #d7ff81;
 }
 
 .hobby-show-card-body {
   text-align: center;
   color:white;
-  margin-top: 5px;
 }
 
 .hobby-show-top-icon {
@@ -42,17 +76,20 @@
 }
 
 .hobby-show-card-body h3 {
+  font-family: "Hachi Maru Pop", cursive;
   font-weight: bold;
+  font-style: normal;
+  color: #3d3b8e;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 .hobby-show-card-body a {
   color: #ff4365;
+  font-family: "Hachi Maru Pop", cursive;
   font-weight: bold;
-  text-align: center;
+  font-style: normal;
   width: 100%;
-  display: inline-block;
   text-decoration: none;
-
 }
 
 .hobby-show-top-text {
@@ -61,14 +98,18 @@
 }
 
 .hobby-show-button, .hobby-show-button:visited, .hobby-show-button:hover {
+  display: flex;
   color:white;
   background-color: #ff4365;
   border-radius: 10px;
   padding: 5px;
   font-weight: bold;
-  border-color: white;
+  // border-color: white;
   box-shadow: 0 4px #999;
   margin-bottom: 3px;
+  align-self: flex-start;
+  border-radius: 0 10px 10px 0;
+  margin-top: 8px;
 }
 
 .hobby-show-button:active {
