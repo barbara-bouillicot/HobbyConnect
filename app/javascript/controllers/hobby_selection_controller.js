@@ -11,7 +11,6 @@ export default class extends Controller {
   select() {
     let selectedCount = 0;
 
-    // Count the number of selected checkboxes
     this.checkboxTargets.forEach(checkbox => {
       if (checkbox.checked) {
         selectedCount++;
@@ -22,7 +21,7 @@ export default class extends Controller {
 
     const maxlimit = 6;
 
-    // Disable extra checkboxes if the maximum limit is reached
+
     if (selectedCount >= maxlimit) {
       this.checkboxTargets.forEach(checkbox => {
         if (!checkbox.checked) {
@@ -35,7 +34,7 @@ export default class extends Controller {
       });
     }
 
-    // Toggle icons-selected class for each icon based on the state of corresponding checkbox
+
     this.checkboxTargets.forEach((checkbox, index) => {
       const icon = this.iconTargets[index];
       const name = this.nameTargets[index];

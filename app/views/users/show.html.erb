@@ -62,7 +62,18 @@
   <ul>
   <% @events.each do |event| %>
     <div class="event-card" data-bs-toggle="modal" data-bs-target="#eventDetailModal<%= event.id %>">
-      <%= event.hobby_id%> | <%= event.name%> | <%= event.location%> | <%= event.date %>
+    <div class="d-flex align-items-center">
+      <div class="user-hobby-icons-container d-flex p-3">
+        <div class="user-hobby-icon-bg">
+          <% if event.hobby.photo.attached? %>
+            <%= cl_image_tag event.hobby.photo.key , class: "user-hobby-icons"%>
+          <% end %>
+        </div>
+      </div>
+      <div >
+        <%= event.name%> | <%= event.location%> | <%= event.date %>
+      </div>
+    </div>
     </div>
     <div class="modal fade" id="eventDetailModal<%= event.id %>" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true" data-controller="edit-event">
       <%= render "events/event_modal", event: event%>
