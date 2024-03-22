@@ -4,7 +4,7 @@
   padding: 10px;
 }
 
-.user-name {
+.username-link {
   text-decoration: none;
   color: black;
   text-align: center;
@@ -13,16 +13,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 20px;
+  background: white;
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 35px;
+  border-color: rgb(182, 180, 180);
   padding: 10px;
   margin-bottom: 20px;
   width: 100%;
   box-sizing: border-box;
 }
 
-.avatar {
+.avatar-large {
   height: 70px;
   width: 70px;
   border-radius: 50%;

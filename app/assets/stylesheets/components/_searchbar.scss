@@ -1,6 +1,7 @@
 .search-bar {
   margin-bottom: 20px;
   margin-left: 10px;
+
 }
 
 .search-container {
@@ -10,16 +11,16 @@
 .search-input {
   padding: 8px;
   width: 200px;
-  background-color: #d5affb65;
+  background-color: #8464f6a5;
   border-radius: 18px;
   margin-top: 15px;
   margin-bottom: 15px;
   color: #ffffff;
-  border: 1px solid #d5aaff34;
+  border: 1px solid #c99ef392;
 }
 
 .search-input::placeholder {
-  color: #737373;
+  color: #ffffff;
   opacity: 1;
 }
 
@@ -30,7 +31,7 @@
 .search-button {
   padding: 5px 10px;
   background-color: transparent;
-  color: #000000;
+  color: #ffffff;
   border: none;
   margin-left: -50px;
 }

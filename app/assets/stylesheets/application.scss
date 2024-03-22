@@ -12,11 +12,18 @@
 @import "components/searchbar";
 
 body {
-  background-color: #fef7f7;
+  background: linear-gradient(rgb(244, 240, 248), rgb(255, 255, 255));
 }
 
+h1 {
+  font-weight: bold;
+}
+
+h2 {
+  font-family: $headers-font;
+}
 .btn {
-  background-color: #eee3f9;
+  background-color: #d1bdf6a5;
   color: #ffffff;
   margin-bottom: 5px;
   border-radius: 14px;
@@ -26,11 +33,11 @@ body {
 }
 
 .btn:hover {
-  color: #b1b1b1;
+color: #d1bdf6de;
 }
 
 .fa-user-pen, .fa-right-from-bracket{
-  color:#d2baeb;
+  color:#ae9bf87a;
 }
 
 .separation-line{
