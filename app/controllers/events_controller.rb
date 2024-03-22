@@ -22,10 +22,16 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-    @event.save
-    respond_to do |format|
-      format.html { redirect_to user_path(current_user), notice: 'Event was successfully created.' }
-      format.text { render partial: "events/new", locals: {event: @event}, formats: [:html] }
+    if @event.save
+      respond_to do |format|
+        format.html { redirect_to user_path(current_user), notice: 'Event was successfully created.' }
+        format.text { render partial: "events/new", locals: {event: Event.new}, formats: [:html], status: :see_other }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to user_path(current_user), notice: 'Event was successfully created.' }
+        format.text { render partial: "events/new", locals: {event: @event}, formats: [:html] }
+      end
     end
   end
 
