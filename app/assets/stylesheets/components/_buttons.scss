@@ -6,9 +6,24 @@
 }
 
 button.fa-solid.fa-plus{
-  background-color: #d5aaff;
+  background-color: #ae9bf87a;
   border: none;
   border-radius: 30%;
   padding: 4px;
   margin-right: 10px;
+}
+
+
+.back-button {
+  color: #ae9bf87a;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
+.back-button .fa-sharp.fa-solid.fa-circle-arrow-left {
+  margin-right: 5px;
 }

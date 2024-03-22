@@ -1,4 +1,9 @@
-<div class="container">
+<% if params[:from] == "all_users" %>
+  <%= link_to '/users', class: "back-button" do %>
+    <i class="fa-sharp fa-solid fa-circle-arrow-left"></i>
+  <% end %>
+<% end %>
+
 
 <div class="d-flex justify-content-between m-3">
  <% if @user == current_user %>

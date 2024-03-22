@@ -1,6 +1,5 @@
 .chatroom {
-  background: rgba(247, 164, 247, 0.3);
-  margin-top: 9px;
+  background: linear-gradient(rgba(216, 202, 254, 0.356),rgba(244, 238, 255, 0.186));
   height: calc(100vh - 75px);
   display: flex;
   flex-direction: column;
@@ -32,7 +31,7 @@
 
 .asker-message {
   max-width: 75%;
-  background-color: rgb(249, 167, 223);
+  background-color: rgb(210, 205, 255);
   border-radius: 30px;
   text-align: right;
   margin-left: 84px;
@@ -48,7 +47,7 @@
 
 .receiver-message {
   max-width: 75%;
-  background-color: rgb(214, 48, 161);
+  background-color: rgb(220, 200, 247);
   border-radius: 30px;
   text-align: left;
   padding: 10px;
