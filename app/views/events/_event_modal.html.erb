@@ -17,11 +17,11 @@
         <% if current_user != event.user %>
           <% if !current_user.has_request?(event) %>
             <%= link_to "I'm Interested", new_event_request_path(event), remote: true, method: :get%>
-            <%# if user is not event.user and they have send a request with the event.id and the status is pending -> Waiting for acceptance%>
           <% elsif current_user.has_pending_request?(event) %>
             <p>Waiting for acceptance</p>
           <% elsif current_user.has_accepted_request?(event) %>
             <p>Already attending</p>
+            <%= link_to "Delete", event_request_path(event_id: event.id, id: Request.find_by(event_id: event, user_id: params[:id]).id) || root_path, data: {turbo_confirm: "Are you sure?", turbo_method: :delete}, class: "btn btn-primary" %>
           <% elsif current_user.has_rejected_request?(event) %>
             <p>Sorry, we're full</p>
           <% end %>
@@ -60,4 +60,3 @@
       </div>
     </div>
   </div>
-
