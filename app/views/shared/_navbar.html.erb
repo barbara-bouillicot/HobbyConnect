@@ -1,27 +1,29 @@
-<div class="icon-bar">
-  <% if user_signed_in? %>
-    <%= link_to user_path(current_user) do %>
-      <i class="fa-solid fa-user"></i>
+<div class="nav-wrapper">
+  <div class="icon-bar">
+    <% if user_signed_in? %>
+      <%= link_to user_path(current_user) do %>
+        <i class="fa-solid fa-user"></i>
+      <% end %>
+    <% else %>
+      <%= link_to  new_user_session_path do %>
+        <i class="fa-solid fa-user"></i>
+      <% end %>
     <% end %>
-  <% else %>
-    <%= link_to  new_user_session_path do %>
-      <i class="fa-solid fa-user"></i>
+
+    <%= link_to '/chatrooms' do %>
+      <i class="fa fa-comments"></i>
     <% end %>
-  <% end %>
 
-  <%= link_to '/chatrooms' do %>
-    <i class="fa fa-comments"></i>
-  <% end %>
+    <%= link_to '/hobbies' do %>
+      <%= image_tag "HobbyHubWhite.png" %>
+    <% end %>
 
-  <%= link_to '/hobbies' do %>
-    <%= image_tag "HobbyHubBig.png" %>
-  <% end %>
+    <%= link_to '/events' do %>
+      <i class="fa-solid fa-calendar-check"></i>
+    <% end %>
 
-  <%= link_to '/events' do %>
-    <i class="fa-solid fa-calendar-check"></i>
-  <% end %>
-
-  <%= link_to '/users' do %>
-    <i class="fa-solid fa-people-group"></i>
-  <% end %>
+    <%= link_to '/users' do %>
+      <i class="fa-solid fa-people-group"></i>
+    <% end %>
+  </div>
 </div>
