@@ -23,9 +23,15 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = current_user
     if @event.save
-      redirect_to user_path(current_user), notice: 'Event was successfully created.'
+      respond_to do |format|
+        format.html { redirect_to user_path(current_user), notice: 'Event was successfully created.' }
+        format.text { render partial: "events/new", locals: {event: Event.new}, formats: [:html], status: :see_other }
+      end
     else
-      render "new", status: :unprocessable_entity
+      respond_to do |format|
+        format.html { redirect_to user_path(current_user), notice: 'Event was successfully created.' }
+        format.text { render partial: "events/new", locals: {event: @event}, formats: [:html] }
+      end
     end
   end
 

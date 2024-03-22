@@ -1,4 +1,3 @@
-<div class="modal fade" id="eventAddModal" tabindex="-1" aria-labelledby="eventAddModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -6,7 +5,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <%= simple_form_for @event do |f| %>
+            <%= simple_form_for event, html: { data: { add_event_target: "form", action: "submit->add-event#create" } } do |f| %>
               <%= f.input :hobby_id%>
               <%= f.input :name%>
               <%= f.input :location%>
@@ -17,4 +16,3 @@
           </div>
         </div>
       </div>
-    </div>
