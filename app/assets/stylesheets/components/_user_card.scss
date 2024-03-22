@@ -4,6 +4,11 @@
   padding: 10px;
 }
 
+.user-name {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+}
 .user-card {
   display: flex;
   justify-content: space-between;
@@ -13,20 +18,24 @@
   border-radius: 20px;
   padding: 10px;
   margin-bottom: 20px;
-  max-width: 600px;
   width: 100%;
   box-sizing: border-box;
 }
 
 .avatar {
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
   border-radius: 50%;
   margin-right: 20px;
 }
 
+.avatar-link {
+  width: 30%;
+}
+
 .user-details {
   flex-grow: 1;
+  width: 65%;
 }
 
 .user-hobbies {
@@ -40,7 +49,6 @@
 }
 
 .user-hobby-icon-bg {
-  background-color: #D7FF81;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -48,6 +56,8 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 5px;
+  border-color: rgb(136, 136, 136);
+  box-shadow: 0 0 3px #474747;
 }
 
 .user-hobby-icons:last-child {

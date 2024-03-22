@@ -10,27 +10,27 @@
 .search-input {
   padding: 8px;
   width: 200px;
-  background-color: #d5aaff34;
+  background-color: #d5affb65;
   border-radius: 18px;
   margin-top: 15px;
   margin-bottom: 15px;
-  color: #d7ff81;
+  color: #ffffff;
   border: 1px solid #d5aaff34;
 }
 
 .search-input::placeholder {
-  color: #d7ff81;
+  color: #737373;
   opacity: 1;
 }
 
 ::-ms-input-placeholder {
-  color: #d7ff81;
+  color: #cecece;
 }
 
 .search-button {
   padding: 5px 10px;
   background-color: transparent;
-  color: #d7ff81;
+  color: #000000;
   border: none;
   margin-left: -50px;
 }

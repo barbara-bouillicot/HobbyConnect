@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 style="font-family: 'Blueberry', sans-serif; color: #d5aaff;">All users</h1>
+  <h1>All users</h1>
 
   <%= form_tag users_path, method: :get, class: "searchbar" do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "search-input" %>
@@ -11,27 +11,23 @@
   <div class="user-cards-container">
     <% @users.each do |user| %>
       <div class="user-card">
-        <div class="avatar-link">
+      <div class="avatar-link">
+      <h4><%= link_to user.username, user_path(user) %></h4>
           <%= link_to user_path(user) do %>
             <% if user.photo.attached? %>
-              <%= image_tag rails_blob_url(user.photo), class: "avatar bigger-avatar" %>
-            <% else %>
-              <%= image_tag "default_avatar.jpg", class: "avatar bigger-avatar" %>
-            <% end %>
+            <%= cl_image_tag(user.photo.key, class: "avatar-large") %>
+          <% end %>
           <% end %>
         </div>
         <div class="user-details">
-          <h2><%= link_to user.username, user_path(user) %></h2>
-          <div>
-            <div class="user-hobby-icons-container">
-              <% user.hobbies.each do |hobby| %>
-                <div class="user-hobby-icon-bg">
-                <% if hobby.photo.attached? %>
-                  <%= cl_image_tag hobby.photo.key, class: "user-hobby-icons" %>
-                  </div>
-                <% end %>
+          <div class="user-hobby-icons-container">
+            <% user.hobbies.each do |hobby| %>
+              <div class="user-hobby-icon-bg">
+              <% if hobby.photo.attached? %>
+                <%= cl_image_tag hobby.photo.key, class: "user-hobby-icons" %>
+                </div>
               <% end %>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>
