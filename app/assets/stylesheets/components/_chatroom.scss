@@ -1,3 +1,4 @@
+
 .chatroom {
   background-color: white;
   height: calc(100vh - 75px);
@@ -5,6 +6,8 @@
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
+  background-image: url('chatbg2.jpg');
+  background-size: cover;
 
   h1 {
     border-bottom: 1px solid $gray-200;
@@ -30,7 +33,7 @@
 
 .asker-message {
   max-width: 75%;
-  background-color: rgb(205, 212, 255);
+  background-color: rgba(212, 205, 255, 0.826);
   border-radius: 30px;
   text-align: right;
   margin-left: 84px;
@@ -46,7 +49,7 @@
 
 .receiver-message {
   max-width: 75%;
-  background-color: rgb(200, 216, 247);
+  background-color: rgba(200, 229, 247, 0.803);
   border-radius: 30px;
   text-align: left;
   padding: 10px;
@@ -60,4 +63,26 @@
 
 #message_content{
   border-radius: 10px;
+}
+
+.chatroom_card {
+  background: white;
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 15px;
+  border-color: rgb(218, 218, 218);
+  box-shadow: 0 2px 4px 0 rgba(125, 124, 124, 0.2);
+  padding: 10px;
+  margin: 15px;
+  margin-bottom: 10px;
+}
+
+.no-link {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+
+}
+
+.chat-icon {
+  margin-left: auto;
 }
