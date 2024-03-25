@@ -8,21 +8,23 @@
           <div class="modal-body">
             <div class="d-flex justify-content-center">
             <% if @user.photo.attached? %>
-                <%= cl_image_tag(@user.photo.key, class: "avatar-large") %>
+                <%= cl_image_tag(@user.photo.key, class: "connect-avatar") %>
               <% end %>
               <div class="icon-container">
               <img src="" data-matching-modal-target="image" class= "hobby-icons">
             </div>
               <% if current_user.photo.attached? %>
-                <%= cl_image_tag(current_user.photo.key, class: "avatar-large") %>
+                <%= cl_image_tag(current_user.photo.key, class: "connect-avatar") %>
               <% end %>
             </div>
+            <div class="text-center mt-3">
             <%= simple_form_for @chatroom do |f| %>
               <%= f.hidden_field :name, value: "#{current_user.username} + #{@user.username}" %>
               <%= f.hidden_field :asker_id, value: current_user.id %>
               <%= f.hidden_field :receiver_id, value: @user.id %>
               <%= f.submit class:"btn btn-form", value: "Confirm"%>
             <% end %>
+            </div>
           </div>
         </div>
       </div>
