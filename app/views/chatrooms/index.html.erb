@@ -1,4 +1,5 @@
 <div class="container">
+<div class="header-and-search">
 <h1>Chatrooms</h1>
 
   <%= form_tag chatrooms_path, method: :get, class: "search-bar" do %>
@@ -7,8 +8,8 @@
       <i class="fa-solid fa-magnifying-glass"></i>
     <% end %>
   <% end %>
-
-  <div class="chatrooms d-flex align-items-start flex-column w-100">
+</div>
+  <div class="chatroom_card d-flex align-items-start flex-column w-100">
     <% @chatrooms.select { |chatroom| chatroom.asker == current_user || chatroom.receiver == current_user }.each do |chatroom| %>
       <div class="container-chatroom d-flex align-items-center">
         <% if chatroom.receiver == current_user %>
@@ -16,13 +17,11 @@
         <% else %>
           <% user = chatroom.receiver %>
         <% end %>
-
         <div class="avatar-container m-3">
           <% if user.photo.attached? && chatroom.status != "rejected" %>
             <%= cl_image_tag(user.photo.key, class: "avatar") %>
           <% end %>
         </div>
-
         <div class="details-container mt-3">
           <% if chatroom.pending? && chatroom.receiver == current_user %>
             <%= user.username %>
