@@ -261,4 +261,21 @@ Event.create!(
   hobby_id:Hobby.first.id
 )
 
+Event.create!(
+  name:"Pub Night",
+  date:"07/08/2024",
+  description:"A boozy night drinking in London Pubs. What's not to like!",
+  location:"London, UK",
+  user_id:User.last.id,
+  hobby_id:Hobby.first.id
+)
+
+Event.create!(
+  name:"Museum Crawl",
+  date:"09/08/2024",
+  description:"A sophisticated day out full of history and culture!",
+  location:"London, UK",
+  user_id:User.last.id,
+  hobby_id:Hobby.first.id
+)
 puts "Seeding events completed!"
