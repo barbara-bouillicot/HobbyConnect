@@ -32,8 +32,10 @@ h2, h4{
   margin-bottom: 5px;
   border-radius: 14px;
   text-decoration: none;
-  width: 100px;
-  height: 35px;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  text-align: center;
 }
 
 .btn:hover {

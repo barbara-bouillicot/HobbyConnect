@@ -1,6 +1,10 @@
 class HobbiesController < ApplicationController
   def index
-    @hobbies = Hobby.all
+    if params[:search].present?
+      @hobbies = Hobby.where("name ILIKE ?", "%#{params[:search]}%")
+    else
+      @hobbies = Hobby.all
+    end
   end
 
   def show
