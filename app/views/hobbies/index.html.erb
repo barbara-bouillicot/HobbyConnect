@@ -1,28 +1,55 @@
 <div class="container">
-  <br>
 
-  <h1 class="text-center">Hobby Hub</h1>
+  <h1>Hobby Hub</h1>
 
-  <br>
+  <div class="header-and-search">
+  <%= form_tag hobbies_path, method: :get, class: "search-bar" do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Hobbies", class: "search-input" %>
+    <%= button_tag type: 'submit', class: "search-button" do %>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    <% end %>
+  <% end %>
+  </div>
 
   <div class="hobby-hub-card-container">
 
     <% @hobbies.each do |hobby| %>
 
-        <%= link_to hobby_path(hobby) do %>
-          <div class="hobby-hub-card">
-            <div class="hobby-card-image">
-              <% if hobby.photo.attached? %>
-                <%= cl_image_tag hobby.photo.key, width: "70px", height: "70px" %>
-              <% else %>
-                <%= hobby.name %>
-              <% end %>
-            </div>
-            <div class="hobby-card-name">
-              <h3><%= hobby.name %></h3>
-            </div>
+      <div class="hobby-hub-card" data-bs-toggle="modal" data-bs-target="#hobbyModal<%= hobby.id %>">
+        <div class="hobby-card-image">
+          <% if hobby.photo.attached? %>
+            <%= cl_image_tag hobby.photo.key, width: "65px", height: "65px" %>
+          <% else %>
+            <%= hobby.name %>
+          <% end %>
         </div>
-        <% end %>
+        <div class="hobby-card-name">
+          <h3><%= hobby.name %></h3>
+        </div>
+      </div>
+
+      <div class="modal fade" id="hobbyModal<%= hobby.id %>" tabindex="-1" aria-labelledby="hobbyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="hobby-modal-header">
+              <div class="modal-image">
+                <% if hobby.photo.attached? %>
+                  <%= cl_image_tag hobby.photo.key, width: "65px", height: "65px" %>
+                <% else %>
+                  <%= hobby.name %>
+                <% end %>
+              </div>
+              <h1 class="modal-title fs-5" id="hobbyModalLabel text-center"><%= hobby.name %></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h2>Buddies</h2>
+              <h2>All Users</h2>
+              <h2>Events</h2>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <% end %>
 
