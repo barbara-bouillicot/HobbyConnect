@@ -2,15 +2,25 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
+        <div class="user-hobby-icons-container d-flex p-3">
+        <div class="user-hobby-icon-bg">
+          <% if event.hobby.photo.attached? %>
+            <%= cl_image_tag event.hobby.photo.key , class: "user-hobby-icons"%>
+          <% end %>
+        </div>
+      </div>
         <h5 class="modal-title" id="eventDetailModalLabel<%= event.id %>" data-model-title="<%= event.name %>"><%= event.name %></h5>
-
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body event-infos" data-edit-event-target="infos">
+        <% if current_user == event.user %>
+          <h5>created by yourself</h5>
+        <% else %>
+          <h5>by <%= link_to event.user.username, user_path(event.user.id)%></h5>
+        <% end %>
+        <p><%= event.description %></p>
         <p><%= event.location %></p>
         <p><%= event.date %></p>
-        <p><%= event.description %></p>
-        <p><%= event.user.username%></p>
 
       </div>
       <div class="modal-footer">
