@@ -3,7 +3,6 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="edit-event"
 export default class extends Controller {
   static targets = ["infos", "form", "editButton"]
-  isOpen = true
 
   connect() {
     this.defaultTitle = this.element.querySelector('.modal-title').textContent.trim()
@@ -14,8 +13,8 @@ export default class extends Controller {
         //this.editButtonTarget.textContent = "Edit"
       //}
       this.element.querySelector('.modal-title').textContent = this.defaultTitle
-      this.isOpen = true
     })
+    this.isOpen = true
   }
 
   displayForm() {
@@ -36,12 +35,16 @@ export default class extends Controller {
     const url = this.formTarget.action
     fetch(url, {
       method: "PATCH",
-      headers: { "Accept": "text/plain" },
+      headers: { "Accept": "application/json" },
       body: new FormData(this.formTarget)
     })
-      .then(response => response.text())
+      .then(response => response.json())
       .then((data) => {
-        this.element.innerHTML = data
+        this.element.innerHTML = data.modal
+        if (!data.persisted) {
+          this.isOpen = true
+          this.displayForm()
+        }
         //console.log(this.element)
       })
   }

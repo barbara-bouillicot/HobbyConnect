@@ -2,9 +2,9 @@ class UsersController < ApplicationController
 
   def index
     if params[:search].present?
-      @users = User.search(params[:search]).joins(:hobbies).distinct.where(hobbies: { id: current_user.hobbies.ids })
+      @users = User.near(current_user.location, 10).search(params[:search]).joins(:hobbies).distinct.where(hobbies: { id: current_user.hobbies.ids })
     else
-      @users = User.joins(:hobbies).distinct.where(hobbies: { id: current_user.hobbies.ids })
+      @users = User.near(current_user.location, 10).joins(:hobbies).distinct.where(hobbies: { id: current_user.hobbies.ids })
     end
   end
 

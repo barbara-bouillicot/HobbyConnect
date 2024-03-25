@@ -1,14 +1,15 @@
 <div class="container">
 
-  <h1>Hobby Hub</h1>
-
   <div class="header-and-search">
-  <%= form_tag hobbies_path, method: :get, class: "search-bar" do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Hobbies", class: "search-input" %>
-    <%= button_tag type: 'submit', class: "search-button" do %>
-      <i class="fa-solid fa-magnifying-glass"></i>
-    <% end %>
-  <% end %>
+    <h1 class="text-center">Hobby Hub</h1>
+
+    <%= form_tag hobbies_path, method: :get, class: "search-bar" do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Hobbies", class: "search-input" %>
+      <%= button_tag type: 'submit', class: "search-button" do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <% end %>
+        <% end %>
+    
   </div>
 
   <div class="hobby-hub-card-container">

@@ -7,21 +7,23 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-
-
   </head>
 
  <body>
-  <div style="margin-bottom: 6rem;">
+ <div style="margin-bottom: 6rem;">
+    <%= render "shared/header" %>
+    <%= yield %>
+    <%= render "shared/flashes" %>
 
-  <%= render "shared/header" %>
-  <%= yield %>
-  <%= render "shared/navbar" %>
-  <%= render "shared/flashes" %>
+    <!-- Render navbar only if not on sign-in page -->
+    <% unless controller_name == 'sessions' && action_name == 'new' || request.path == root_path %>
+      <%= render "shared/navbar" %>
+    <% end %>
   </div>
   </body>
 </html>
