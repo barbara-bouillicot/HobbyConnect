@@ -6,7 +6,20 @@
           </div>
           <div class="modal-body">
             <%= simple_form_for event, html: { data: { add_event_target: "form", action: "submit->add-event#create" } } do |f| %>
-              <%= f.input :hobby_id%>
+               <%= f.label :hobby_id, 'Select a hobby' %>
+            <div class="image-checkboxes" data-controller = "matching-modal">
+              <% Hobby.all.each do |hobby| %>
+                <% if hobby.photo.attached? %>
+                    <label >
+                      <div class="image-checkbox" data-matching-modal-target="icon">
+                        <%= cl_image_tag hobby.photo.key, class: "hobby-icon" %>
+                        <%= f.check_box :hobby_id, { autocomplete: "hobby", data: { matching_modal_target: "checkbox", action: "change->matching-modal#toggle" } }, hobby.id, nil %>
+                      </div>
+                      <p class="hobby-name" data-matching-modal-target="name" ><%= hobby.name %></p>
+                      </label>
+                    <% end %>
+                  <% end %>
+                </div>
               <%= f.input :name%>
               <%= f.input :location%>
               <%= f.input :date, as: :string, input_html: { data: { controller: "datepicker" }}%>
