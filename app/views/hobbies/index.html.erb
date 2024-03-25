@@ -1,7 +1,7 @@
 <div class="container">
   <br>
 
-  <h1>Hobby Hub</h1>
+  <h1 class="text-center">Hobby Hub</h1>
 
   <br>
 
@@ -9,16 +9,20 @@
 
     <% @hobbies.each do |hobby| %>
 
-      <div class="hobby-hub-card">
         <%= link_to hobby_path(hobby) do %>
-          <% if hobby.photo.attached? %>
-            <%= cl_image_tag hobby.photo.key, width: "70px", height: "70px" %>
-          <% else %>
-            <%= hobby.name %>
-          <% end %>
+          <div class="hobby-hub-card">
+            <div class="hobby-card-image">
+              <% if hobby.photo.attached? %>
+                <%= cl_image_tag hobby.photo.key, width: "70px", height: "70px" %>
+              <% else %>
+                <%= hobby.name %>
+              <% end %>
+            </div>
+            <div class="hobby-card-name">
+              <h3><%= hobby.name %></h3>
+            </div>
+        </div>
         <% end %>
-        <p><%= hobby.name %></p>
-      </div>
 
     <% end %>
 
