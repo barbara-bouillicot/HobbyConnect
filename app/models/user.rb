@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
+
   has_many :chatrooms_as_asker, class_name: "Chatroom", foreign_key: :asker_id, dependent: :destroy
   has_many :chatrooms_as_receiver, class_name: "Chatroom", foreign_key: :receiver_id, dependent: :destroy
   has_many :selected_hobbies
@@ -16,7 +19,6 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   validates :bio, length: { in: 20..200 }
   validate :validate_age
-
 
 
   def self.search(query)
