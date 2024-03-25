@@ -1,35 +1,36 @@
 .hobby-hub-card-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin-left: 6px;
-  
+  display: flex;
+  align-items: center;
+  // grid-template-columns: 1fr;
+  // margin-left: 6px;
+  flex-direction: column;
+  justify-content: center;
+  // padding: 0 5%;
+  // width: 100vw;
+  a {
+    text-decoration: none;
+    width: 100%;
+    color: black;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .hobby-hub-card {
   border-color: rgb(136, 136, 136);
   box-shadow: 0 0 3px #474747;
-  height: 100px;
-  width: 80px;
+  height: auto;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   align-items: center;
-  margin: 5px;
+  margin: 5px 0;
   padding: 5px;
-  border-radius: 4px;
+  border-radius: 20px;
 }
 
-.hobby-hub-card p {
-  margin-bottom: 0;
-  font-size: 12px;
-  color: #3d3b8e;
-  font-weight: bold;
-}
-
-.hobby-hub-header {
-  font-family: "Hachi Maru Pop", cursive;
-  font-weight: bolder;
-  font-style: normal;
-  color: #ff4365;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  margin-bottom: 0;
+.hobby-card-name {
+  text-align: center;
+  text-decoration: none;
+  flex-grow: 1;
 }
