@@ -1,11 +1,10 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
     if params[:search].present?
-      @events = Event.where("name ILIKE ?", "%#{params[:search]}%")
+      @events = Event.near(current_user.location, 10).where("name ILIKE ?", "%#{params[:search]}%")
     else
-      @events = Event.all
+      @events = Event.near(current_user.location, 10)
     end
   end
 
