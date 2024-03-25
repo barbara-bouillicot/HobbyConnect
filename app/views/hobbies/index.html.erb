@@ -46,7 +46,15 @@
             <div class="modal-body">
               <h2>Buddies</h2>
               <h2>All Users</h2>
-              <h2>Events</h2>
+              <h2>Events </h2>
+                <% @events[0..2].each do |event| %>
+                <ul>
+                  <% if hobby.id == event.hobby_id  %>
+                  <li><b><%= event.name %></b><br><em><%= event.location %></em><br><%= event.date %></li>
+                  <% end %>
+                </ul>
+                <% end %>
+              <a href="#"><em>See all <%= hobby.name %> events...</em></a>
             </div>
           </div>
         </div>

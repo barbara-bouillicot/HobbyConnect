@@ -5,6 +5,8 @@ class HobbiesController < ApplicationController
     else
       @hobbies = Hobby.all
     end
+    @events = Event.all
+    # @events = Event.where(id: hobby_id)
   end
 
   def show
