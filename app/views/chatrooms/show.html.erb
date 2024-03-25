@@ -1,6 +1,14 @@
+
+
+  <%= link_to '/chatrooms', class: "back-button" do %>
+    <i class="fa-sharp fa-solid fa-circle-arrow-left"></i>
+  <% end %>
+
+
 <div class="container chatroom"
-  data-controller="chatroom-subscription"
-  data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+
+data-controller="chatroom-subscription"
+data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
   <% if @chatroom.asker == current_user %>
     <h1><%= cl_image_tag(@chatroom.receiver.photo.key, class: "avatar") if @chatroom.receiver.photo.attached? %><%= @chatroom.receiver.username %></h1>
   <% else %>
