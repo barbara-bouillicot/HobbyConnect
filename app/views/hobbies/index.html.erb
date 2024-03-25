@@ -35,7 +35,7 @@
             <div class="hobby-modal-header">
               <div class="modal-image">
                 <% if hobby.photo.attached? %>
-                  <%= cl_image_tag hobby.photo.key, width: "65px", height: "65px" %>
+                  <%= cl_image_tag hobby.photo.key, width: "40px", height: "40px" %>
                 <% else %>
                   <%= hobby.name %>
                 <% end %>
@@ -45,7 +45,19 @@
             </div>
             <div class="modal-body">
               <h2>Buddies</h2>
+              <div class="hobby-modal-users">
+                  <% @users[0..4].each do |user| %>
+                    <%= cl_image_tag user.photo.key, width: "40px", height: "40px"  %>
+                  <% end %>
+              </div>
+                <p class="text-end"><a href="#"><em>See all <%= hobby.name %> buddies...</em></a></p>
               <h2>All Users</h2>
+              <div class="hobby-modal-users">
+                  <% @users[0..4].each do |user| %>
+                    <%= cl_image_tag user.photo.key, width: "40px", height: "40px"  %>
+                  <% end %>
+              </div>
+                <p class="text-end"><a  href="#"><em>See all <%= hobby.name %> users...</em></a></p>
               <h2>Events </h2>
                 <% @events[0..2].each do |event| %>
                 <ul>
@@ -54,7 +66,7 @@
                   <% end %>
                 </ul>
                 <% end %>
-              <a href="#"><em>See all <%= hobby.name %> events...</em></a>
+              <p class="text-end"><a href="#"><em>See all <%= hobby.name %> events...</em></a></p>
             </div>
           </div>
         </div>
