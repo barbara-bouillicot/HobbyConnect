@@ -147,7 +147,7 @@ puts "Seeding users..."
     bio: "Hello, I am #{username.capitalize} from #{address.capitalize}! I would like to meet new friends who share my hobbies",
     email: "#{username}@gmail.com",
     password: "123456",
-    location: address,
+    location: "London",
   )
 
   user.photo.attach(io: file_avatar, filename: "#{username}_avatar.jpg", content_type: 'image/jpg')
@@ -159,7 +159,7 @@ User.create!(
   bio:"Hello I am Peter from somewhere, USA! What a world! Lordy lordy lord!",
   email:"peter@piper.com",
   password:"123456",
-  location:"somewhere, USA"
+  location:"London"
 )
 
 User.create!(
@@ -168,7 +168,7 @@ User.create!(
   bio:"Hello I am Luisa from somewhere, Germany! What a world! Lordy lordy lord!",
   email:"luisa@luisa.com",
   password:"123456",
-  location:"somewhere, Germany"
+  location:"London"
 )
 
 User.create!(
@@ -177,7 +177,7 @@ User.create!(
   bio:"Hello I am Laura from somewhere, England! What a world! Lordy lordy lord!",
   email:"laura@laura.com",
   password:"123456",
-  location:"somewhere, England"
+  location:"London"
 )
 
 User.create!(
@@ -186,7 +186,7 @@ User.create!(
   bio:"Hello I am Barbara from somewhere, France! What a world! Lordy lordy lord!",
   email:"barbara@barbara.com",
   password:"123456",
-  location:"somewhere, France"
+  location:"London"
 )
 
 User.create!(
@@ -195,7 +195,7 @@ User.create!(
   bio:"Hello I am Matthew from somewhere, USA! What a world! Lordy lordy lord!",
   email:"matt@matt.com",
   password:"123456",
-  location:"somewhere, USA"
+  location:"London"
 )
 
 puts "Seeding users completed!"

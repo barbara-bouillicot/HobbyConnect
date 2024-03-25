@@ -1,11 +1,10 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
     if params[:search].present?
-      @events = Event.where("name ILIKE ?", "%#{params[:search]}%")
+      @events = Event.near(current_user.location, 10).where("name ILIKE ?", "%#{params[:search]}%")
     else
-      @events = Event.all
+      @events = Event.near(current_user.location, 10)
     end
   end
 
@@ -23,14 +22,11 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = current_user
     if @event.save
-      respond_to do |format|
-        format.html { redirect_to user_path(current_user), notice: 'Event was successfully created.' }
-        format.text { render partial: "events/new", locals: {event: Event.new}, formats: [:html], status: :see_other }
-      end
+      redirect_to user_path(current_user), notice: 'Event was successfully created.'
     else
       respond_to do |format|
-        format.html { redirect_to user_path(current_user), notice: 'Event was successfully created.' }
-        format.text { render partial: "events/new", locals: {event: @event}, formats: [:html] }
+        format.html { render :new }
+        format.turbo_stream { render turbo_stream: turbo_stream.update('eventAddModal', partial: 'events/new', locals: { event: @event }) }
       end
     end
   end
@@ -41,12 +37,12 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    @event.update(event_params)
+    @persisted = @event.update(event_params)
     respond_to do |format|
       format.html { redirect_to user_path(current_user) }
-      format.text { render partial: "events/event_modal", locals: {event: @event}, formats: [:html] }
+      # format.text { render partial: "events/event_modal", locals: {event: @event}, formats: [:html] }
+      format.json
     end
-
   end
 
   def destroy
