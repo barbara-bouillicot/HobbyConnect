@@ -55,7 +55,7 @@
     <div class="d-flex justify-content-between align-items-center">
     <h3>Events: </h3>
     <% if @user == current_user %>
-      <div class="modal fade" id="eventAddModal" tabindex="-1" aria-labelledby="eventAddModalLabel" aria-hidden="true" data-controller="add-event">
+      <div class="modal fade" id="eventAddModal" tabindex="-1" aria-labelledby="eventAddModalLabel" aria-hidden="true">
         <%= render "events/new", event: @event %>
       </div>
       <button data-bs-toggle="modal" data-bs-target="#eventAddModal" i class="fa-solid fa-plus "></i></button>
