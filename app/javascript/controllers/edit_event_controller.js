@@ -40,8 +40,10 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
-        this.element.innerHTML = data.modal
-        if (!data.persisted) {
+        if (data.persisted) {
+          window.location.reload();
+        } else {
+          this.element.innerHTML = data.modal
           this.isOpen = true
           this.displayForm()
         }
