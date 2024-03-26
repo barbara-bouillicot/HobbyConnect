@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding: 8px;
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
 .username-link {
@@ -20,8 +20,8 @@
   border-radius: 15px;
   border-color: rgb(218, 218, 218);
   box-shadow: 0 2px 4px 0 rgba(125, 124, 124, 0.2);
-  padding: 5px;
   margin-bottom: 20px;
+  padding: 18px;
   width: 98%;
   box-sizing: border-box;
 }
@@ -36,6 +36,7 @@
 .avatar-link {
   width: 30%;
   margin-top: -15px;
+  padding-left: 15px;
 }
 
 .user-details {
