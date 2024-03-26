@@ -16,7 +16,9 @@
       <h2><%= link_to user.username, user_path(user, from: "all_users"), class: "username-link" %></h2>
           <%= link_to user_path(user) do %>
             <% if user.photo.attached? %>
-              <%= cl_image_tag(user.photo.key, class: "avatar-large") %>
+              <%= cl_image_tag(user.photo.key, class: "card-avatar-large") %>
+              <% else %>
+              <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "card-avatar-large") %>
             <% end %>
           <% end %>
         </div>

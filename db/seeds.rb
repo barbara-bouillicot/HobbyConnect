@@ -198,6 +198,23 @@ User.create!(
   location:"London"
 )
 
+User.create!(
+  username:"Bill",
+  birthdate: "21/09/1985",
+  bio:"Hello I am Matthew from somewhere, USA! What a world! Lordy lordy lord!",
+  email:"bill@bill.com",
+  password:"123456",
+  location:"London"
+)
+
+User.create!(
+  username:"Anna",
+  birthdate: "21/09/1985",
+  bio:"Hello I am Matthew from somewhere, USA! What a world! Lordy lordy lord!",
+  email:"anna@anna.com",
+  password:"123456",
+  location:"London"
+)
 puts "Seeding users completed!"
 
 puts "Seeding users..."

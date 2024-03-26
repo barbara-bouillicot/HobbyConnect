@@ -24,7 +24,7 @@
 <% if @user.photo.attached? %>
   <%= cl_image_tag(@user.photo.key, class: "avatar-x-large") %>
   <% else %>
-  <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-large") %>
+  <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-x-large") %>
 <% end %>
 </div>
 
