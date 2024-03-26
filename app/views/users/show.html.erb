@@ -19,8 +19,8 @@
   <% end %>
 </div>
 
-<div class="container d-flex justify-content-between mt-3">
-<div class="img-profile w-50 mb-5">
+<div class="container d-flex justify-content-center mt-3">
+<div class="img-profile w-50 my-3 d-flex justify-content-center align-items-center">
 <% if @user.photo.attached? %>
   <%= cl_image_tag(@user.photo.key, class: "avatar-x-large") %>
   <% else %>
@@ -28,7 +28,7 @@
 <% end %>
 </div>
 
-<div class="hobbies-profile d-flex justify-content-between flex-wrap w-50" data-controller="matching-modal">
+<div class="hobbies-profile d-flex justify-content-between align-items-center flex-wrap w-50" data-controller="matching-modal">
   <% @hobbies.each do |hobby| %>
     <% if hobby.photo.attached? && @user != current_user && current_user.hobbies.include?(hobby) %>
       <div class="icon-container icons-selected">
@@ -49,7 +49,7 @@
   <h1 style="text-align: left;"><%= @user.username %></h1>
   <% age = Date.today.year - @user.birthdate.year %>
   <% age -= 1 if Date.today.strftime("%m%d") < @user.birthdate.strftime("%m%d") %>
-  <p>Age: <%= age %></p>
+  <p id="age">Age: <%= age %></p>
 
   <p><i class="fa-solid fa-location-dot"></i> <%= @user.location %></p>
   <div class="separation-line mb-3"></div>
