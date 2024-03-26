@@ -47,13 +47,15 @@
   <% elsif chatroom.pending? %>
     <% if chatroom.receiver == current_user %>
       <%= user.username %>
-      <%= simple_form_for chatroom do |f| %>
-        <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-        <%= f.submit "✔️", class: "button-cleanup btn-sm"%>
-      <% end %>
-      <%= simple_form_for chatroom do |f| %>
-        <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-        <%= f.submit "✖️", class: "button-cleanup btn-sm" %>
+      <div class="d-flex justify-content-right a-r-btn">
+        <%= simple_form_for chatroom do |f| %>
+          <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+          <%= f.submit "✔️"%>
+        <% end %>
+        <%= simple_form_for chatroom do |f| %>
+          <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+          <%= f.submit "✖️"%>
+        </div>
       <% end %>
     <% elsif chatroom.asker == current_user %>
       <p class="mr-3"><%= chatroom.receiver.username %></p>

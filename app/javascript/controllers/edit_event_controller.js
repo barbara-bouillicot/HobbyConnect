@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="edit-event"
 export default class extends Controller {
-  static targets = ["infos", "form", "editButton"]
+  static targets = ["infos", "form", "editButton", "labels"]
 
   connect() {
     this.defaultTitle = this.element.querySelector('.modal-title').textContent.trim()
@@ -19,10 +19,12 @@ export default class extends Controller {
 
   displayForm() {
     if (this.isOpen) {
+      this.labelsTarget.classList.add("d-none")
       this.infosTarget.classList.add("d-none")
       this.formTarget.classList.remove("d-none")
       this.element.querySelector('.modal-title').textContent = 'Edit Event'
     } else {
+      this.labelsTarget.classList.remove("d-none")
       this.infosTarget.classList.remove("d-none")
       this.formTarget.classList.add("d-none")
       this.element.querySelector('.modal-title').textContent = this.defaultTitle
