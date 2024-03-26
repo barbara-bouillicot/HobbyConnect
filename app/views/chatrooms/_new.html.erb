@@ -10,7 +10,7 @@
             <% if @user.photo.attached? %>
                 <%= cl_image_tag(@user.photo.key, class: "avatar-large") %>
               <% end %>
-              <div class="icon-container">
+              <div class="icon-container icons-selected">
               <img src="" data-matching-modal-target="image" class= "hobby-icons">
             </div>
               <% if current_user.photo.attached? %>
