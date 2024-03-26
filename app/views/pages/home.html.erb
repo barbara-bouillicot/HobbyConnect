@@ -1,18 +1,26 @@
-
-
-<div class="homepagebuttons d-flex flex-column align-items-center justify-content-center mt-5">
-  <% if user_signed_in? %>
-    <%= render 'shared/navbar' %>
-    <div class="btn">
-      <%= link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete }, style: "text-decoration: none; color: #3d3b8e;" %>
+<div class="animation-container">
+  <div class="name-btns-container">
+    <%= image_tag "HomePageLogo.png" , class:"app-name", width: 300, height: 300 %>
+    <div class="homepagebuttons d-flex flex-column align-items-center justify-content-center">
+      <% if user_signed_in? %>
+        <%= render 'shared/navbar' %>
+        <div >
+          <%= link_to "Log Out login-button", destroy_user_session_path, data: { turbo_method: :delete }, style: "text-decoration: none", class: "btn login-button" %>
+        </div>
+      <% else %>
+        <div >
+          <%= link_to "Sign In", new_user_session_path, style: "text-decoration: none", class: "btn login-button" %>
+        </div>
+        <div >
+          <%= link_to "Sign Up", new_user_registration_path, style: "text-decoration: none", class: "btn login-button" %>
+        </div>
+      <% end %>
     </div>
-  <% else %>
-    <div class="btn">
-      <%= link_to "Sign In", new_user_session_path, style: "text-decoration: none; color: #3d3b8e;" %>
-    </div>
-
-    <div class="btn">
-      <%= link_to "Sign Up", new_user_registration_path, style: "text-decoration: none; color: #3d3b8e;" %>
-    </div>
-  <% end %>
+  </div>
 </div>
+<div class="floating-icons">
+    <div class="bouncing-icon" id="icon2"><%= image_tag "astronomy.png", width: 35 %></div>
+    <div class="bouncing-icon" id="icon3"><%= image_tag "tent.png", width: 35 %></div>
+    <div class="bouncing-icon" id="icon4"><%= image_tag "travelling.png", width: 35 %></div>
+    <div class="bouncing-icon" id="icon5"><%= image_tag "music.png", width: 35 %></div>
+  </div>
