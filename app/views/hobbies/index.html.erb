@@ -45,6 +45,10 @@
             </div>
             <div class="modal-body">
               <h2>Buddies</h2>
+              <% list = @selected_hobbies.where(hobby_id: hobby.id) %>
+              <% list.each do |item| %>
+                <%= item.user %>
+              <% end %>
               <div class="hobby-modal-users">
                   <% @users[0..4].each do |user| %>
                     <%= cl_image_tag user.photo.key, width: "40px", height: "40px"  %>
@@ -54,7 +58,9 @@
               <h2>All Users</h2>
               <div class="hobby-modal-users">
                   <% @users[0..4].each do |user| %>
-                    <%= cl_image_tag user.photo.key, width: "40px", height: "40px"  %>
+                    <% if @selected_hobbies.where(hobby_id: hobby.id) %>
+                      <%= cl_image_tag user.photo.key, width: "40px", height: "40px"  %>
+                    <% end %>
                   <% end %>
               </div>
                 <p class="text-end"><a  href="#"><em>See all <%= hobby.name %> users...</em></a></p>
