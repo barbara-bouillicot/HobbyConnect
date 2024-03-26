@@ -1,54 +1,52 @@
 <div class="container">
-<div class="header-and-search">
-<h1>Chatrooms</h1>
-
-  <%= form_tag chatrooms_path, method: :get, class: "search-bar" do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Buddies", class: "search-input" %>
-    <%= button_tag type: 'submit', class: "search-button" do %>
-      <i class="fa-solid fa-magnifying-glass"></i>
+  <div class="header-and-search">
+    <h1>Inbox</h1>
+    <%= form_tag chatrooms_path, method: :get, class: "search-bar" do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Buddies", class: "search-input" %>
+      <%= button_tag type: 'submit', class: "search-button" do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
-  <div class="chatroom_card d-flex align-items-start flex-column w-100">
-    <% @chatrooms.select { |chatroom| chatroom.asker == current_user || chatroom.receiver == current_user }.each do |chatroom| %>
-      <div class="container-chatroom d-flex align-items-center">
+  </div>
+
+  <div class="chatroom_card">
+      <% @chatrooms.select { |chatroom| chatroom.asker == current_user || chatroom.receiver == current_user }.each do |chatroom| %>
         <% if chatroom.receiver == current_user %>
           <% user = chatroom.asker %>
         <% else %>
           <% user = chatroom.receiver %>
         <% end %>
-        <div class="avatar-container m-3">
-          <% if user.photo.attached? && chatroom.status != "rejected" %>
-            <%= cl_image_tag(user.photo.key, class: "avatar") %>
-          <% end %>
-        </div>
-        <div class="details-container mt-3">
-          <% if chatroom.pending? && chatroom.receiver == current_user %>
-            <%= user.username %>
-            <%= simple_form_for chatroom do |f| %>
-              <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-              <%= f.submit "✔️", class: "button-cleanup btn-sm"%>
-            <% end %>
-            <%= simple_form_for chatroom do |f| %>
-              <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-              <%= f.submit "✖️", class: "button-cleanup btn-sm" %>
-            <% end %>
-          <% elsif chatroom.pending? && chatroom.asker == current_user %>
-            <p class="mr-3"><%= chatroom.receiver.username %></p>
-            <em><%= "Waiting for #{chatroom.receiver.username} to confirm the connection" %></em>
-          <% end %>
-        </div>
 
-        <div class="links-container">
-          <% if chatroom.status == "accepted" %>
-            <% if chatroom.asker == current_user %>
-              <%= link_to chatroom.receiver.username, chatroom_path(chatroom) %>
-            <% else %>
-              <%= link_to chatroom.asker.username, chatroom_path(chatroom) %>
+        <div class="container-chatroom d-flex align-items-center">
+          <div class="avatar-container m-3">
+            <% if user.photo.attached? && chatroom.status != "rejected" %>
+              <%= cl_image_tag(user.photo.key, class: "avatar") %>
             <% end %>
-          <% end %>
+          </div>
+
+          <div class="details-container mt-3">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <div>
+                <strong><%= user.username %></strong>
+                <% last_message = chatroom.messages.last %>
+                <% if last_message %>
+                  <p class="last-message-preview"><%= last_message.content %></p>
+                <% end %>
+              </div>
+              <div class="ml-auto">
+                <div class="links-container">
+                  <% if chatroom.status == "accepted" %>
+                    <% if chatroom.asker == current_user %>
+                      <%= link_to chatroom.receiver.username, chatroom_path(chatroom), class: "no-link" %>
+                    <% else %>
+                      <%= link_to chatroom.asker.username, chatroom_path(chatroom), class: "no-link" %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
   </div>
 </div>

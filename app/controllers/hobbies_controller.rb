@@ -7,6 +7,7 @@ class HobbiesController < ApplicationController
     end
     @events = Event.all
     # @events = Event.where(id: hobby_id)
+    @users = User.all
   end
 
   def show
