@@ -19,13 +19,13 @@
       <div class="hobby-hub-card" data-bs-toggle="modal" data-bs-target="#hobbyModal<%= hobby.id %>">
         <div class="hobby-card-image">
           <% if hobby.photo.attached? %>
-            <%= cl_image_tag hobby.photo.key, width: "65px", height: "65px" %>
+            <%= cl_image_tag hobby.photo.key, width: "40px", height: "40px" %>
           <% else %>
             <%= hobby.name %>
           <% end %>
         </div>
         <div class="hobby-card-name">
-          <h3><%= hobby.name %></h3>
+          <h4><%= hobby.name %></h4>
         </div>
       </div>
 
