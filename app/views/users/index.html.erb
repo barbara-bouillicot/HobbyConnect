@@ -25,8 +25,12 @@
         <div class="user-details">
           <div class="user-hobby-icons-container">
             <% user.hobbies.each do |hobby| %>
+            <% if hobby.photo.attached? && @user != current_user && current_user.hobbies.include?(hobby) %>
+              <div class="user-hobby-icon-bg icons-selected">
+                <%= cl_image_tag hobby.photo.key, class: "user-hobby-icons" %>
+                </div>
+            <% else %>
               <div class="user-hobby-icon-bg">
-              <% if hobby.photo.attached? %>
                 <%= cl_image_tag hobby.photo.key, class: "user-hobby-icons" %>
                 </div>
               <% end %>
