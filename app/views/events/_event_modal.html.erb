@@ -1,28 +1,30 @@
 <% labels = { interested: false, attending: false } %>
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
+      <div style="width: 100%; position: absolute; text-align: right; padding: 0px 3px 0px 3px; height: auto">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
       <div class="modal-header">
         <div class="user-hobby-icons-container d-flex pe-3">
-        <div class="user-hobby-icon-bg">
-          <% if event.hobby.photo.attached? %>
-            <%= cl_image_tag event.hobby.photo.key , class: "user-hobby-icons"%>
-          <% end %>
+          <div class="user-hobby-icon-bg">
+            <% if event.hobby.photo.attached? %>
+              <%= cl_image_tag event.hobby.photo.key , class: "user-hobby-icons"%>
+            <% end %>
+          </div>
         </div>
-      </div>
-        <div style="margin: 0">
-          <h5 class="modal-title" style="font-size: 26px" id="eventDetailModalLabel<%= event.id %>" data-model-title="<%= event.name %>"><%= event.name %></h5>
+        <div style="margin: 0; text-align: left; width: 100%">
+          <h1 class="modal-title fs-5" style="margin-top: 0; text-align: left" id="eventDetailModalLabel<%= event.id %>" data-model-title="<%= event.name %>"><%= event.name %></h1>
           <% if current_user == event.user %>
             <p style="margin: 0">created by yourself</p>
           <% else %>
             <p class="user-link" style="margin: 0">by <%= link_to event.user.username, user_path(event.user.id)%></p>
           <% end %>
-          </div>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
       </div>
       <div class="modal-body event-infos" data-edit-event-target="infos">
         <p ><%= event.location %></p>
         <p style="margin-bottom: 16px"><%= event.date.strftime("%d %B %Y") %></p>
-        <h5><%= event.description %></h5>
+        <h5 class="fs-5"><%= event.description %></h5>
 
       </div>
       <div class="end">
@@ -57,7 +59,7 @@
                   <% labels[:interested] = true %>
                   <p style="margin-top: 10px; margin-bottom: 6px">Interested:</p>
                 <% end %>
-                <div class="d-flex justify-content-between interested-users" style="border-top: solid 2px #e3e3e3">
+                <div class="d-flex justify-content-between interested-users" style="border-top: solid 1px #e3e3e3">
                   <div class="d-flex justify-content-left">
                     <% if request.user.photo.attached? %>
                         <%= cl_image_tag(request.user.photo.key, class: "avatar-small") %>
@@ -74,9 +76,9 @@
               <% elsif request.accepted? && !request.rejected?%>
               <% unless labels[:attending] %>
                   <% labels[:attending] = true %>
-                  <p>Attending:</p>
+                  <p style="margin-top: 10px; margin-bottom: 6px">Attending:</p>
                 <% end %>
-                <div class="interested-users" style="border-top: solid 2px #e3e3e3">
+                <div class="interested-users" style="border-top: solid 1px #e3e3e3">
                   <%# event.requests.each do |request| %>
                     <% if request.accepted? && !request.rejected?%>
                       <div class="d-flex justify-content-left">
