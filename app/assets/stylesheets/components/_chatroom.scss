@@ -86,3 +86,13 @@
 .chat-icon {
   margin-left: auto;
 }
+
+.container.chatroom {
+  max-height: calc(87vh - 75px); /* Adjust 100px to match your header/footer height */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds the height */
+}
+
+.fa-comment {
+  color: rgba(144, 124, 236, 0.418);
+  /* Other styling properties if needed */
+}
