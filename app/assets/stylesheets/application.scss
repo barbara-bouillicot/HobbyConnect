@@ -27,7 +27,7 @@ h2, h4{
   font-family: $headers-font;
 }
 .btn {
-  background-color: #a39bf87a;
+  background-color: #a39bf8;
   color: #ffffff;
   margin-bottom: 5px;
   border-radius: 14px;
@@ -39,7 +39,7 @@ h2, h4{
 }
 
 .btn:hover {
-color: rgba(218, 200, 250, 0.871);
+  background-color: #a39bf898;
 }
 
 .fa-user-pen, .fa-right-from-bracket{

@@ -10,7 +10,7 @@
   border-radius: 15px;
   border-color: rgb(218, 218, 218);
   box-shadow: 0 2px 4px 0 rgba(125, 124, 124, 0.2);
-  padding: 5px;
+  padding: 10px 5px 0px 5px;
   margin-bottom: 20px;
   max-width: 400px;
   width: 100%;
@@ -46,4 +46,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.event-card p {
+  font-size: 14px; color: grey; margin-bottom: 6px
+}
+
+.event-card .date {
+  margin-bottom: 0;
 }

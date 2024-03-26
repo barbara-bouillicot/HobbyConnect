@@ -12,16 +12,21 @@
     <div class="event-index-container">
     <% @events.each do |event| %>
       <div class="event-card" data-bs-toggle="modal" data-bs-target="#eventDetailModal<%= event.id %>">
-      <div class="event-hobby-icon-bg">
-      <% if event.hobby && event.hobby.photo.attached? %>
-      <%= cl_image_tag event.hobby.photo.key, class: "event-hobby-icon" %>
-    <% end %>
+      <div class="d-flex align-items-center">
+        <div class="user-hobby-icons-container d-flex p-3">
+          <div class="event-hobby-icon-bg">
+            <% if event.hobby && event.hobby.photo.attached? %>
+              <%= cl_image_tag event.hobby.photo.key, class: "event-hobby-icon" %>
+            <% end %>
+          </div>
+        </div>
+        <div>
+          <h5><%= event.name %></h5>
+          <p><%= event.location %></p>
+          <p><%= event.date.strftime("%d %B %Y") %></p>
+        </div>
       </div>
-        <h2 class="event-details"><%= event.name %></h2>
-        <p><%= event.location %></p>
-        <p><%= event.date %></p>
       </div>
-
       <div class="modal fade" id="eventDetailModal<%= event.id %>" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true" data-controller="edit-event">
       <%= render "events/event_modal", event: event%>
       </div>

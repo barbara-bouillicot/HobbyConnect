@@ -2,57 +2,80 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <div class="user-hobby-icons-container d-flex p-3">
+        <div class="user-hobby-icons-container d-flex pe-3">
         <div class="user-hobby-icon-bg">
           <% if event.hobby.photo.attached? %>
             <%= cl_image_tag event.hobby.photo.key , class: "user-hobby-icons"%>
           <% end %>
         </div>
       </div>
-        <h5 class="modal-title" id="eventDetailModalLabel<%= event.id %>" data-model-title="<%= event.name %>"><%= event.name %></h5>
+        <div style="margin: 0">
+          <h5 class="modal-title" style="font-size: 26px" id="eventDetailModalLabel<%= event.id %>" data-model-title="<%= event.name %>"><%= event.name %></h5>
+          <% if current_user == event.user %>
+            <p style="margin: 0">created by yourself</p>
+          <% else %>
+            <p class="user-link" style="margin: 0">by <%= link_to event.user.username, user_path(event.user.id)%></p>
+          <% end %>
+          </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body event-infos" data-edit-event-target="infos">
-        <% if current_user == event.user %>
-          <h5>created by yourself</h5>
-        <% else %>
-          <h5>by <%= link_to event.user.username, user_path(event.user.id)%></h5>
-        <% end %>
-        <p><%= event.description %></p>
-        <p><%= event.location %></p>
-        <p><%= event.date %></p>
+        <p ><%= event.location %></p>
+        <p style="margin-bottom: 16px"><%= event.date.strftime("%d %B %Y") %></p>
+        <h5><%= event.description %></h5>
 
       </div>
-      <div class="modal-footer">
+      <div class="end">
         <% if current_user != event.user %>
           <% if !current_user.has_request?(event) %>
+          <div class="interested-btn" style="text-align: center">
             <%= link_to "I'm Interested", new_event_request_path(event), remote: true, method: :get%>
+          </div>
           <% elsif current_user.has_pending_request?(event) %>
-            <p>Waiting for acceptance</p>
+            <p style="margin-bottom: 0px">Waiting for acceptance</p>
           <% elsif current_user.has_accepted_request?(event) %>
-            <p>Already attending</p>
-            <%= link_to "Delete", event_request_path(event_id: event.id, id: current_user.requests.find_by(event_id: event.id)&.id) || root_path, data: {turbo_confirm: "Are you sure?", turbo_method: :delete}, class: "btn btn-primary" %>
+          <div class="d-flex justify-content-between">
+            <p style="margin-bottom: 0px">Already attending</p>
+            <%= link_to event_request_path(event_id: event.id, id: current_user.requests.find_by(event_id: event.id)&.id) || root_path, data: {turbo_confirm: "Are you sure?", turbo_method: :delete} do %>
+              <i class="fa-solid fa-trash-can trash-can" style="color: #a39bf8; margin-left: 6px; font-size: 20px"></i>
+            <% end %>
+          </div>
           <% elsif current_user.has_rejected_request?(event) %>
-            <p>Sorry, we're full</p>
+            <p style="margin-bottom: 0px">Sorry, we're full</p>
           <% end %>
         <% else %>
-          <button data-action="click->edit-event#displayForm" data-edit-event-target="editButton">Edit</button>
-          <%= link_to "Delete", event_path(event), data: {turbo_confirm: "Are you sure?", turbo_method: :delete}, class: "btn btn-primary" %>
+          <div class="edit-delete" style="text-align: right; font-size: 20px; color: #a39bf8">
+            <i class="fa-solid fa-pen-to-square trash-can" data-action="click->edit-event#displayForm" data-edit-event-target="editButton"></i>
+            <%= link_to event_path(event), data: { turbo_confirm: "Are you sure?", turbo_method: :delete } do %>
+              <i class="fa-solid fa-trash-can trash-can" style="color: #a39bf8; margin-left: 6px"></i>
+            <% end %>
+          </div>
           <% event.requests.each do |request| %>
             <% if request.pending? %>
               <p>Interested:</p>
-              <p><%= request.user.username %></p>
-              <div>
-                <%= button_to "accept", accept_request_event_request_path(event, request), method: :patch, class: "btn btn-success" %>
-                <%= button_to "reject", reject_request_event_request_path(event, request), method: :patch, class: "btn btn-danger" %>
+              <div class="d-flex justify-content-between interested-users" style="border-top: solid 2px #e3e3e3; border-bottom: solid 2px #e3e3e3">
+                <p style="margin-bottom: 0; padding: 0; height: 2rem; line-height: 2rem "><%= link_to request.user.username, user_path(request.user.id) %></p>
+                <div class="d-flex a-r-btn">
+                  <p><%= button_to "accept", accept_request_event_request_path(event, request), method: :patch %></p>
+                  <p><%= button_to "reject", reject_request_event_request_path(event, request), method: :patch %></p>
+                </div>
               </div>
             <% elsif request.accepted? && !request.rejected?%>
               <p>Attending:</p>
-              <% event.requests.each do |request| %>
-                <% if request.accepted? && !request.rejected?%>
-                  <%= request.user.username %>
-                <% end %>
-              <% end %>
+              <div class="interested-users" style="border-top: solid 2px #e3e3e3; border-bottom: solid 2px #e3e3e3">
+                <%# event.requests.each do |request| %>
+                  <% if request.accepted? && !request.rejected?%>
+                    <div class="d-flex justify-content-left">
+                      <% if request.user.photo.attached? %>
+                        <%= cl_image_tag(request.user.photo.key, class: "avatar-small") %>
+                      <% end %>
+                      <p style="margin-bottom: 0; padding: 0; height: 2rem; line-height: 2rem ">
+                        <%= link_to request.user.username, user_path(request.user.id) %>
+                      </p>
+                    </div>
+                  <% end %>
+                <%# end %>
+              </div>
             <% end %>
           <% end %>
         <% end %>
