@@ -1,4 +1,4 @@
-
+<% labels = { interested: false, attending: false } %>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -50,34 +50,51 @@
               <i class="fa-solid fa-trash-can trash-can" style="color: #a39bf8; margin-left: 6px"></i>
             <% end %>
           </div>
-          <% event.requests.each do |request| %>
-            <% if request.pending? %>
-              <p>Interested:</p>
-              <div class="d-flex justify-content-between interested-users" style="border-top: solid 2px #e3e3e3; border-bottom: solid 2px #e3e3e3">
-                <p style="margin-bottom: 0; padding: 0; height: 2rem; line-height: 2rem "><%= link_to request.user.username, user_path(request.user.id) %></p>
-                <div class="d-flex a-r-btn">
-                  <p><%= button_to "accept", accept_request_event_request_path(event, request), method: :patch %></p>
-                  <p><%= button_to "reject", reject_request_event_request_path(event, request), method: :patch %></p>
-                </div>
-              </div>
-            <% elsif request.accepted? && !request.rejected?%>
-              <p>Attending:</p>
-              <div class="interested-users" style="border-top: solid 2px #e3e3e3; border-bottom: solid 2px #e3e3e3">
-                <%# event.requests.each do |request| %>
-                  <% if request.accepted? && !request.rejected?%>
-                    <div class="d-flex justify-content-left">
-                      <% if request.user.photo.attached? %>
+          <div data-edit-event-target="labels">
+            <% event.requests.each do |request| %>
+              <% if request.pending? %>
+                <% unless labels[:interested] %>
+                  <% labels[:interested] = true %>
+                  <p style="margin-top: 10px; margin-bottom: 6px">Interested:</p>
+                <% end %>
+                <div class="d-flex justify-content-between interested-users" style="border-top: solid 2px #e3e3e3">
+                  <div class="d-flex justify-content-left">
+                    <% if request.user.photo.attached? %>
                         <%= cl_image_tag(request.user.photo.key, class: "avatar-small") %>
+                      <% else %>
+                        <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-small") %>
                       <% end %>
-                      <p style="margin-bottom: 0; padding: 0; height: 2rem; line-height: 2rem ">
-                        <%= link_to request.user.username, user_path(request.user.id) %>
-                      </p>
-                    </div>
-                  <% end %>
-                <%# end %>
-              </div>
+                    <p style="margin-bottom: 0; padding: 0; height: 2rem; line-height: 2rem "><%= link_to request.user.username, user_path(request.user.id) %></p>
+                  </div>
+                  <div class="d-flex a-r-btn">
+                    <p><%= button_to "✔️", accept_request_event_request_path(event, request), method: :patch %></p>
+                    <p><%= button_to "✖️", reject_request_event_request_path(event, request), method: :patch %></p>
+                  </div>
+                </div>
+              <% elsif request.accepted? && !request.rejected?%>
+              <% unless labels[:attending] %>
+                  <% labels[:attending] = true %>
+                  <p>Attending:</p>
+                <% end %>
+                <div class="interested-users" style="border-top: solid 2px #e3e3e3">
+                  <%# event.requests.each do |request| %>
+                    <% if request.accepted? && !request.rejected?%>
+                      <div class="d-flex justify-content-left">
+                        <% if request.user.photo.attached? %>
+                          <%= cl_image_tag(request.user.photo.key, class: "avatar-small") %>
+                        <% else %>
+                            <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-small") %>
+                        <% end %>
+                        <p style="margin-bottom: 0; padding: 0; height: 2rem; line-height: 2rem ">
+                          <%= link_to request.user.username, user_path(request.user.id) %>
+                        </p>
+                      </div>
+                    <% end %>
+                  <%# end %>
+                </div>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         <% end %>
       </div>
 

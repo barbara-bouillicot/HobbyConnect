@@ -11,8 +11,130 @@
   margin: 10px;
 }
 
+
+.animation-container {
+  position: relative;
+  width: 100%;
+  height: 690px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.app-name {
+  font-size: 2rem;
+}
+
+.name-btns-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .homepagebuttons {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+.bouncing-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bouncing-icon {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #96c8fb;
+  background-image: linear-gradient(315deg, #96c8fb 0%, #ddbdfc 74%);
+}
+
+#icon2 {
+  animation: move2 20s ease-in-out infinite alternate;
+}
+
+#icon3 {
+  animation: move3 20s ease-in-out infinite alternate;
+}
+
+#icon4 {
+  animation: move4 20s ease-in-out infinite alternate;
+}
+
+#icon5 {
+  animation: move5 20s ease-in-out infinite alternate;
+}
+
+@keyframes move2 {
+  0% { left: calc(100vw - 50px); top: calc(50vh - 25px); }
+  25% { left: calc(50vw - 25px); top: calc(80vh - 25px); }
+  50% { left: 0; top: calc(50vh - 25px); }
+  75% { left: calc(50vw - 25px); top: calc(20vh - 25px); }
+  100% { left: calc(100vw - 50px); top: calc(50vh - 25px); }
+}
+
+
+@keyframes move3 {
+  0% { left: calc(50vw - 25px); top: calc(80vh - 25px); }
+  25% { left: 0; top: calc(50vh - 25px); }
+  50% { left: calc(50vw - 25px); top: calc(20vh - 25px); }
+  75% { left: calc(100vw - 50px); top: calc(50vh - 25px); }
+  100% { left: calc(50vw - 25px); top: calc(80vh - 25px); }
+}
+
+@keyframes move4 {
+  0% { left: 0; top: calc(50vh - 25px); }
+  25% { left: calc(50vw - 25px); top: calc(20vh - 25px); }
+  50% { left: calc(100vw - 50px); top: calc(50vh - 25px); }
+  75% { left: calc(50vw - 25px); top: calc(80vh - 25px); }
+  100% { left: 0; top: calc(50vh - 25px); }
+}
+
+@keyframes move5 {
+  0% { left: calc(50vw - 25px); top: calc(20vh - 25px); }
+  25% { left: calc(100vw - 50px); top: calc(50vh - 25px); }
+  50% { left: calc(50vw - 25px); top: calc(80vh - 25px); }
+  75% { left: 0; top: calc(50vh - 25px); }
+  100% { left: calc(50vw - 25px); top: calc(20vh - 25px); }
+}
+
+
+
+.app-name {
+  opacity: 0;
+  animation: fadeIn 5s forwards;
+}
+
+.login-button {
+  width: 130px !important;
+  height: auto;
+  opacity: 0;
+  animation: fadeIn 2s forwards 3s;
+  color:white;
+}
+
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
