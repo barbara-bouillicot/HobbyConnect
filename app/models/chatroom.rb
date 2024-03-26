@@ -6,7 +6,7 @@ class Chatroom < ApplicationRecord
 
   validates :status, presence: true
 
-    def self.search(query)
+  def self.search(query)
     if query.present?
       where("name ILIKE ?", "%#{query}%")
     else
