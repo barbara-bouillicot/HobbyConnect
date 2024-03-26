@@ -19,7 +19,7 @@
       <div class="hobby-hub-card" data-bs-toggle="modal" data-bs-target="#hobbyModal<%= hobby.id %>">
         <div class="hobby-card-image">
           <% if hobby.photo.attached? %>
-            <%= cl_image_tag hobby.photo.key, width: "40px", height: "40px" %>
+            <div class="icon-container"><%= cl_image_tag hobby.photo.key, width: "30px", height: "30px" %></div>
           <% else %>
             <%= hobby.name %>
           <% end %>
@@ -34,11 +34,13 @@
           <div class="modal-content">
             <div class="hobby-modal-header">
               <div class="modal-image">
+                <div class="icon-container">
                 <% if hobby.photo.attached? %>
-                  <%= cl_image_tag hobby.photo.key, width: "40px", height: "40px" %>
+                  <%= cl_image_tag hobby.photo.key, width: "30px", height: "30px" %>
                 <% else %>
                   <%= hobby.name %>
                 <% end %>
+                </div>
               </div>
               <h1 class="modal-title fs-5" id="hobbyModalLabel text-center"><%= hobby.name %></h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

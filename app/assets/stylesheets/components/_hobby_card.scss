@@ -26,11 +26,6 @@
   padding: 5px;
 }
 
-.modal-image {
-  padding-left: 5px;
-  padding-top: 5px;
-  //background-color: rgb(241, 241, 127);
-}
 
 .hobby-modal-users {
   width: 100%;
@@ -55,13 +50,13 @@
   justify-content: center;
   align-items: center;
   background: white;
-  flex-direction: column;
+  flex-direction: row;
   border: 1px solid rgb(192, 192, 192);
   border-radius: 15px;
   border-color: rgb(218, 218, 218);
   box-shadow: 0 2px 4px 0 rgba(125, 124, 124, 0.2);
   padding: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   width: 98%;
   box-sizing: border-box;
 }
@@ -70,4 +65,23 @@
   text-align: center;
   text-decoration: none;
   flex-grow: 1;
+}
+
+.icon-container{
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: thin;
+  border-color: rgb(136, 136, 136);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 3px #474747;
+  background-color: #96c8fb;
+  background-image: linear-gradient(315deg, #96c8fb 0%, #ddbdfc 74%);
+
+  a{
+    text-align: center;
+  }
 }
