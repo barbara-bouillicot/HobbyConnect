@@ -52,7 +52,9 @@
                 <% list[0..4].each do |item| %>
                   <% if item.user.photo.attached? %>
                     <div class="avatar-bordered">
-                      <%= cl_image_tag item.user.photo.key, width: "40px", height: "40px"  %>
+                      <a href="users/<%= item.user.id %>">
+                        <%= cl_image_tag item.user.photo.key, width: "40px", height: "40px"  %>
+                      </a>
                     </div>
                   <% end %>
                 <% end %>
@@ -62,11 +64,11 @@
             </p>
               <h2>Events </h2>
                 <% @events[0..2].each do |event| %>
-                <ul>
-                  <% if hobby.id == event.hobby_id  %>
-                  <li><b><%= event.name %></b><br><em><%= event.location %></em><br><%= event.date %></li>
-                  <% end %>
-                </ul>
+                  <ul>
+                    <% if hobby.id == event.hobby_id  %>
+                      <li><a href="users/<%= event.user.id %>"><b><%= event.name %></b><br><em><%= event.location %></em><br><%= event.date %></a></li>
+                    <% end %>
+                  </ul>
                 <% end %>
                 <p class="see-all-link">
                 <%= link_to "See all #{hobby.name} Events", events_path(search: hobby.name)%>
