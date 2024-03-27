@@ -7,24 +7,25 @@
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
 <div class="avatar_and_name">
-    <% if @chatroom.asker.photo.attached? && @chatroom.status != "rejected" %>
-      <%= cl_image_tag(@chatroom.asker.photo.key, class: "chat_avatar") %>
-      <% else %>
-      <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "chat_avatar") %>
-    <% end %>
 
 
     <% if @chatroom.asker == current_user %>
       <%= link_to user_path(@chatroom.receiver) do %>
         <h1>
-          <%= cl_image_tag(@chatroom.receiver.photo.key, class: "chat_avatar") if @chatroom.receiver.photo.attached? %>
+          <% if @chatroom.receiver.photo.attached? %>
+          <%= cl_image_tag(@chatroom.receiver.photo.key, class: "chat_avatar")  %>
+          <% else %>
+          <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "chat_avatar") %>
           <%= @chatroom.receiver.username %>
         </h1>
       <% end %>
-    <% else %>
+    <% elsif %>
       <%= link_to user_path(@chatroom.asker) do %>
         <h1>
-          <%= cl_image_tag(@chatroom.asker.photo.key, class: "chat_avatar") if @chatroom.asker.photo.attached? %>
+          <% if @chatroom.asker.photo.attached? %>
+          <%= cl_image_tag(@chatroom.asker.photo.key, class: "chat_avatar")  %>
+          <% else %>
+          <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "chat_avatar") %>
           <%= @chatroom.asker.username %>
         </h1>
       <% end %>
