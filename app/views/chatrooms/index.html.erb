@@ -35,8 +35,8 @@
               <% else %>
                 <%= link_to chatroom.asker.username, chatroom_path(chatroom), class: "no-link" %>
               <% end %>
+              <i class="fa-sharp fa-solid fa-comment"></i>
             <% end %>
-            <i class="fa-sharp fa-solid fa-comment"></i>
           </div>
   <% if chatroom.status == "accepted" %>
     <% last_message = chatroom.messages.last %>
