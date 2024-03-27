@@ -58,7 +58,7 @@
                 <% end %>
               </div>
               <p class="see-all-link">
-              <%= link_to "All Users", hobbies_path(search: hobby.name)%>
+              <%= link_to "See all #{hobby.name} Users", users_path(search: hobby.name)%>
             </p>
               <h2>Events </h2>
                 <% @events[0..2].each do |event| %>
@@ -69,7 +69,7 @@
                 </ul>
                 <% end %>
                 <p class="see-all-link">
-                <%= link_to "All Events", events_path(search: hobby.name)%>
+                <%= link_to "See all #{hobby.name} Events", events_path(search: hobby.name)%>
               </p>
             </div>
           </div>
