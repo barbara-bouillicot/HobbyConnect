@@ -1,0 +1,8 @@
+# config/meta.yml
+
+ meta_product_name: "Hobby Connect"
+ meta_title: "Hobby Connect - Discover, Connect, Explore: Your Hobby Hub Awaits"
+ meta_description: "An easy way to connect and build friendships with others, over hobbies you have in common"
+ meta_type: "application"
+ meta_url: "www.hobbyconnect.lol"
+ meta_image: "og_image.png" # should exist in `app/assets/images/`
