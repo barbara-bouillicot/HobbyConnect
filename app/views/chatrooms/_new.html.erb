@@ -1,6 +1,6 @@
 <div class="modal fade" id="chatroomAddModal" tabindex="-1" aria-labelledby="chatroomAddModalLabel" aria-hidden="true" >
-      <div class="modal-dialog">
-        <div class="modal-content">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content ">
           <div class="modal-header">
             <h5 class="modal-title" id="chatroomAddModalLabel">Connect?</h5>
             <button type="button" class="btn-close ml-0" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -8,32 +8,33 @@
           <div class="modal-body">
             <div class="d-flex justify-content-center">
             <% if @user.photo.attached? %>
-              <%= cl_image_tag(@user.photo.key, class: "avatar-large") %>
+              <%= cl_image_tag(@user.photo.key, class: "avatar-large border") %>
               <% else %>
-              <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-large") %>
+              <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-large border") %>
             <% end %>
 
               <div class="icon-container icons-selected">
               <img src="" data-matching-modal-target="image" class= "hobby-icons">
             </div>
               <% if current_user.photo.attached? %>
-                <%= cl_image_tag(current_user.photo.key, class: "avatar-large") %>
+                <%= cl_image_tag(current_user.photo.key, class: "avatar-large border") %>
                 <% else %>
-              <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-large") %>
+              <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-large border") %>
 
               <% end %>
             </div>
-            <% if Chatroom.exists?(asker_id: current_user.id, receiver_id: @user.id) || Chatroom.exists?(asker_id: @user.id, receiver_id: current_user.id) %>
-              <p>You and <%= @user.username %> and already buddies.</p>
+
+          </div>
+          <% if Chatroom.exists?(asker_id: current_user.id, receiver_id: @user.id) || Chatroom.exists?(asker_id: @user.id, receiver_id: current_user.id) %>
+              <p class="text-center">You and <%= @user.username %> are already buddies.</p>
             <% else %>
             <%= simple_form_for @chatroom do |f| %>
               <%= f.hidden_field :name, value: "#{current_user.username} + #{@user.username}" %>
               <%= f.hidden_field :asker_id, value: current_user.id %>
               <%= f.hidden_field :receiver_id, value: @user.id %>
-              <%= f.submit class:"btn btn-form", value: "Confirm"%>
+              <%= f.submit class:"btn btn-form btn-confirm mt-3", value: "Confirm"%>
             <% end %>
             <% end %>
-          </div>
         </div>
       </div>
     </div>
