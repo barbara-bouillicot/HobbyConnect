@@ -13,7 +13,7 @@
   margin-top: 5px;
   a {
     text-decoration: none;
-    width: 100%;
+    // width: 100%;
     color: black;
     margin: 0;
     padding: 0;
@@ -24,24 +24,32 @@
   display: flex;
   justify-content: space-between;
   padding: 15px;
+  border-bottom: solid 1px #e3e3e3 ;
+
+  h1 {
+    margin-top: 22px;
+    margin-bottom: 22px;
+  }
 }
 
 
 .hobby-modal-users {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  //flex-direction: row;
   // grid-template-columns: 1fr, 1fr, 1fr, 1fr, 1fr;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
   margin-bottom: 10px;
   img {
-    height: 50px;
-    width: 50px;
+    height: 55px;
+    width: 55px;
     object-fit: cover;
     border: 1px solid rgb(209, 209, 209);
     border-radius: 50%;
     box-shadow: 0 2px 4px 0 rgba(116, 116, 116, 0.2);
+    margin-left: 7px;
+    margin-right: 7px;
   }
 }
 
@@ -77,27 +85,43 @@ ul {
   text-align: center;
   text-decoration: none;
   flex-grow: 1;
+
+  p {
+    font-size: 23px;
+    margin-bottom: 0;
+  }
 }
 
 .icon-container{
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  border-style: solid;
-  border-width: thin;
-  border-color: rgb(136, 136, 136);
+  border: none;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 3px #474747;
   background-color: #96c8fb;
   background-image: linear-gradient(315deg, #96c8fb 0%, #ddbdfc 74%);
-
-  a{
+  margin: 10px;
+  a {
     text-align: center;
   }
 }
 
 .see-all-link {
   text-align:right;
+  margin-bottom: 0;
+  margin-top: 10px;
+
+  a {
+    color: grey;
+  }
+}
+
+.hobby-card-image {
+  .icon-container {
+    width: 45px;
+    height: 45px;
+  }
 }
