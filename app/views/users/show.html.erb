@@ -22,9 +22,9 @@
 <div class="container d-flex justify-content-center mt-3">
 <div class="img-profile w-50 my-3 d-flex align-items-center">
 <% if @user.photo.attached? %>
-  <%= cl_image_tag(@user.photo.key, class: "avatar-x-large") %>
+  <%= cl_image_tag(@user.photo.key, class: "avatar-x-large border") %>
   <% else %>
-  <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-x-large") %>
+  <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-x-large border") %>
 <% end %>
 </div>
 
@@ -51,7 +51,8 @@
   <% age -= 1 if Date.today.strftime("%m%d") < @user.birthdate.strftime("%m%d") %>
   <p id="age">Age: <%= age %></p>
 
-  <p><i class="fa-solid fa-location-dot"></i> <%= @user.location %></p>
+  <p><i class="fa-solid fa-location-dot"></i> <%= @user.location_by_city %></p>
+
   <div class="separation-line mb-3"></div>
     <p><%= @user.bio %></p>
   <div class="separation-line mb-3"></div>

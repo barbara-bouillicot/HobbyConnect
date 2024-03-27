@@ -8,18 +8,18 @@
           <div class="modal-body">
             <div class="d-flex justify-content-center">
             <% if @user.photo.attached? %>
-              <%= cl_image_tag(@user.photo.key, class: "avatar-large") %>
+              <%= cl_image_tag(@user.photo.key, class: "avatar-large border") %>
               <% else %>
-              <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-large") %>
+              <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-large border") %>
             <% end %>
 
               <div class="icon-container icons-selected">
               <img src="" data-matching-modal-target="image" class= "hobby-icons">
             </div>
               <% if current_user.photo.attached? %>
-                <%= cl_image_tag(current_user.photo.key, class: "avatar-large") %>
+                <%= cl_image_tag(current_user.photo.key, class: "avatar-large border") %>
                 <% else %>
-              <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-large") %>
+              <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-large border") %>
 
               <% end %>
             </div>

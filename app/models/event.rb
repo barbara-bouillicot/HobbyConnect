@@ -18,4 +18,11 @@ class Event < ApplicationRecord
       @events = Event.all
     end
   end
+
+
+  def location_by_city
+    address = self.location.split(",")
+    "#{address.first}, #{address.last}"
+  end
+
 end

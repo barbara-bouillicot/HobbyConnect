@@ -33,6 +33,10 @@ class User < ApplicationRecord
     chatrooms_as_asker + chatrooms_as_receiver
   end
 
+  def location_by_city
+    address = self.location.split(",")
+    "#{address.first}, #{address.last}"
+  end
 
   def has_request?(event)
     Request.find_by(user: self, event: event)
