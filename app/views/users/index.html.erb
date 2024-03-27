@@ -1,44 +1,43 @@
 <div class="container">
   <div class="header-and-search">
-
-  <%= form_tag users_path, method: :get, class: "searchbar" do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "search-input" %>
-    <%= button_tag type: 'submit', class: "search-button" do %>
-      <i class="fa-solid fa-magnifying-glass"></i>
+    <%= form_tag users_path, method: :get, class: "searchbar" do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "search-input" %>
+      <%= button_tag type: 'submit', class: "search-button" do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
   <div class="user-cards-container">
     <% @users.each do |user| %>
-    <% if user != current_user %>
-      <div class="user-card">
-      <div class="avatar-link">
-      <h2><%= link_to user.username, user_path(user, from: "all_users"), class: "username-link" %></h2>
-          <%= link_to user_path(user) do %>
-            <% if user.photo.attached? %>
-              <%= cl_image_tag(user.photo.key, class: "card-avatar-large") %>
+      <% if user != current_user %>
+        <div class="user-card">
+          <%= link_to user_path(user, from: "all_users"), class:"user-card-link" do %>
+            <div class="avatar">
+              <h2 class="username"><%= user.username %></h2>
+              <% if user.photo.attached? %>
+                <%= cl_image_tag(user.photo.key, class: "card-avatar-large") %>
               <% else %>
-              <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "card-avatar-large") %>
-            <% end %>
+                <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "card-avatar-large") %>
+              <% end %>
+            </div>
+            <div class="user-details">
+              <div class="user-hobby-icons-container">
+                <% user.hobbies.each do |hobby| %>
+                  <% if hobby.photo.attached? && @user != current_user && current_user.hobbies.include?(hobby) %>
+                    <div class="user-hobby-icon-bg icons-selected">
+                      <%= cl_image_tag hobby.photo.key, class: "user-hobby-icons" %>
+                    </div>
+                  <% else %>
+                    <div class="user-hobby-icon-bg">
+                      <%= cl_image_tag hobby.photo.key, class: "user-hobby-icons" %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
           <% end %>
         </div>
-        <div class="user-details">
-          <div class="user-hobby-icons-container">
-            <% user.hobbies.each do |hobby| %>
-            <% if hobby.photo.attached? && @user != current_user && current_user.hobbies.include?(hobby) %>
-              <div class="user-hobby-icon-bg icons-selected">
-                <%= cl_image_tag hobby.photo.key, class: "user-hobby-icons" %>
-                </div>
-            <% else %>
-              <div class="user-hobby-icon-bg">
-                <%= cl_image_tag hobby.photo.key, class: "user-hobby-icons" %>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
       <% end %>
     <% end %>
   </div>
