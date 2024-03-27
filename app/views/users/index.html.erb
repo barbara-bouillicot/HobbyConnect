@@ -1,7 +1,7 @@
 <div class="container">
   <div class="header-and-search">
     <%= form_tag users_path, method: :get, class: "searchbar" do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "search-input" %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "search-input", autocomplete: "off" %>
       <%= button_tag type: 'submit', class: "search-button" do %>
         <i class="fa-solid fa-magnifying-glass"></i>
       <% end %>

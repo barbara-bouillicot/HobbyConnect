@@ -4,7 +4,7 @@
     <h1 class="text-center">Hobby Hub</h1>
 
     <%= form_tag hobbies_path, method: :get, class: "search-bar" do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Hobbies", class: "search-input" %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Hobbies", class: "search-input", autocomplete: "off" %>
       <%= button_tag type: 'submit', class: "search-button" do %>
         <i class="fa-solid fa-magnifying-glass"></i>
         <% end %>
