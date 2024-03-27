@@ -7,8 +7,8 @@
       <%= text_field_tag :search, params[:search], placeholder: "Search Hobbies", class: "search-input", autocomplete: "off" %>
       <%= button_tag type: 'submit', class: "search-button" do %>
         <i class="fa-solid fa-magnifying-glass"></i>
-        <% end %>
-        <% end %>
+      <% end %>
+    <% end %>
 
   </div>
 
@@ -19,13 +19,13 @@
       <div class="hobby-hub-card" data-bs-toggle="modal" data-bs-target="#hobbyModal<%= hobby.id %>">
         <div class="hobby-card-image">
           <% if hobby.photo.attached? %>
-            <div class="icon-container"><%= cl_image_tag hobby.photo.key, width: "30px", height: "30px" %></div>
+            <div class="icon-container"><%= cl_image_tag hobby.photo.key, width: "25px", height: "25px" %></div>
           <% else %>
             <%= hobby.name %>
           <% end %>
         </div>
         <div class="hobby-card-name">
-          <h4><%= hobby.name %></h4>
+          <p><%= hobby.name %></p>
         </div>
       </div>
 
@@ -42,11 +42,11 @@
                 <% end %>
                 </div>
               </div>
-              <h1 class="modal-title fs-5" id="hobbyModalLabel text-center"><%= hobby.name %></h1>
+              <h1 class="modal-title fs-5" id="hobbyModalLabel text-center" style="height"><%= hobby.name %></h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <h2>Users</h2>
+              <h2>Fans</h2>
               <div class="hobby-modal-users">
                 <% list = @selected_hobbies.where(hobby_id: hobby.id) %>
                 <% list[0..4].each do |item| %>
@@ -58,17 +58,15 @@
                 <% end %>
               </div>
               <p class="see-all-link">
-              <%= link_to "See all #{hobby.name} Users", users_path(search: hobby.name)%>
+              <%= link_to "See all #{hobby.name} Fans", users_path(search: hobby.name)%>
             </p>
-              <h2>Events </h2>
+              <h2 style="margin-top: 16px">Events </h2>
                 <% @events.where(hobby_id: hobby.id)[0..2].each do |event| %>
-                  <ul>
-                    <li><a href="users/<%= event.user.id %>"><b><%= event.name %></b><br><em><%= event.location %></em><br><%= event.date %></a></li>
-                  </ul>
+                    <p style="border-bottom: solid #e3e3e3 1px; margin-bottom: 6px; padding-bottom: 6px"><a href="users/<%= event.user.id %>"><b><%= event.name %></b><br><em><%= event.location %></em><br><%= event.date.strftime("%d %B %Y") %></a></p>
                 <% end %>
                 <p class="see-all-link">
-                <%= link_to "See all #{hobby.name} Events", events_path(hobby_name: hobby.name)%>
-              </p>
+                  <%= link_to "See all #{hobby.name} Events", events_path(hobby_name: hobby.name)%>
+                </p>
             </div>
           </div>
         </div>
