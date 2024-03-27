@@ -116,7 +116,7 @@
               <% end %>
             <% end %>
           </div>
-          <%= f.input :name %>
+          <%= f.input :name, input_html: { autocomplete: "off" } %>
           <%= f.input :location %>
           <%= f.input :date, as: :string, input_html: { data: { controller: "datepicker" } } %>
           <%= f.input :description %>
