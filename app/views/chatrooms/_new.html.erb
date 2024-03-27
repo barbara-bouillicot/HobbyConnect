@@ -25,7 +25,7 @@
             </div>
 
           </div>
-          <% if Chatroom.exists?(asker_id: current_user.id, receiver_id: @user.id) || Chatroom.exists?(asker_id: @user.id, receiver_id: current_user.id) %>
+          <% if Chatroom.exists?(asker_id: current_user.id, receiver_id: @user.id) || Chatroom.exists?(asker_id: @user.id, receiver_id: current_user.id) && @chatroom.status == "accepted"%>
               <p class="text-center">You and <%= @user.username %> are already buddies.</p>
             <% else %>
             <%= simple_form_for @chatroom do |f| %>
