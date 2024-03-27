@@ -51,11 +51,9 @@
                 <% list = @selected_hobbies.where(hobby_id: hobby.id) %>
                 <% list[0..4].each do |item| %>
                   <% if item.user.photo.attached? %>
-                    <div class="avatar-bordered">
                       <a href="users/<%= item.user.id %>">
-                        <%= cl_image_tag item.user.photo.key, width: "40px", height: "40px"  %>
+                        <%= cl_image_tag item.user.photo.key  %>
                       </a>
-                    </div>
                   <% end %>
                 <% end %>
               </div>
