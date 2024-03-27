@@ -18,51 +18,55 @@
           <% user = chatroom.receiver %>
         <% end %>
 
+        <% unless chatroom.status == "rejected" %>
         <div class="container-chatroom d-flex align-items-center">
           <div class="avatar-container m-3">
             <% if user.photo.attached? && chatroom.status != "rejected" %>
               <%= cl_image_tag(user.photo.key, class: "avatar") %>
-              <% else %>
+            <% else %>
+            <% unless chatroom.status == "rejected" %>
               <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar") %>
             <% end %>
+           <% end %>
           </div>
 
           <div class="details-container mt-3">
-          <div class="links-container">
-            <% if chatroom.status == "accepted" %>
-              <% if chatroom.asker == current_user %>
-                <%= link_to chatroom.receiver.username, chatroom_path(chatroom), class: "no-link" %>
-              <% else %>
-                <%= link_to chatroom.asker.username, chatroom_path(chatroom), class: "no-link" %>
+            <div class="links-container">
+              <% if chatroom.status == "accepted" %>
+                <% if chatroom.asker == current_user %>
+                  <%= link_to chatroom.receiver.username, chatroom_path(chatroom), class: "no-link" %>
+                <% else %>
+                  <%= link_to chatroom.asker.username, chatroom_path(chatroom), class: "no-link" %>
+                <% end %>
+                <i class="fa-sharp fa-solid fa-comment"></i>
               <% end %>
-              <i class="fa-sharp fa-solid fa-comment"></i>
+            </div>
+            <% if chatroom.status == "accepted" %>
+              <% last_message = chatroom.messages.last %>
+              <% if last_message %>
+                <p class="last-message-preview"><%= last_message.content %></p>
+              <% end %>
+            <% elsif chatroom.pending? %>
+              <% if chatroom.receiver == current_user %>
+                <%= user.username %>
+                <div class="d-flex justify-content-right a-r-btn">
+                  <%= simple_form_for chatroom do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                    <%= f.submit "✔️"%>
+                  <% end %>
+                  <%= simple_form_for chatroom do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                    <%= f.submit "✖️"%>
+                  </div>
+                <% end %>
+              <% elsif chatroom.asker == current_user %>
+                <p class="mr-3"><%= chatroom.receiver.username %></p>
+                <em><%= "Waiting for #{chatroom.receiver.username} to confirm the connection" %></em>
+              <% end %>
             <% end %>
           </div>
-  <% if chatroom.status == "accepted" %>
-    <% last_message = chatroom.messages.last %>
-    <% if last_message %>
-      <p class="last-message-preview"><%= last_message.content %></p>
-    <% end %>
-  <% elsif chatroom.pending? %>
-    <% if chatroom.receiver == current_user %>
-      <%= user.username %>
-      <div class="d-flex justify-content-right a-r-btn">
-        <%= simple_form_for chatroom do |f| %>
-          <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
-          <%= f.submit "✔️"%>
+        </div>
         <% end %>
-        <%= simple_form_for chatroom do |f| %>
-          <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-          <%= f.submit "✖️"%>
-        </div>
-      <% end %>
-    <% elsif chatroom.asker == current_user %>
-      <p class="mr-3"><%= chatroom.receiver.username %></p>
-      <em><%= "Waiting for #{chatroom.receiver.username} to confirm the connection" %></em>
-    <% end %>
-  <% end %>
-</div>
-        </div>
       <% end %>
     </div>
   </div>
