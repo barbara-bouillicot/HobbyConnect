@@ -95,7 +95,8 @@
   box-shadow: 0 2px 4px 0 rgba(125, 124, 124, 0.2);
   padding: 10px;
   margin: 15px;
-  margin-bottom: 10px;
+  height: calc(75vh - 70px);
+  overflow-y: auto;
 }
 
 .no-link {
