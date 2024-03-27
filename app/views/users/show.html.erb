@@ -20,7 +20,7 @@
 </div>
 
 <div class="container d-flex justify-content-center mt-3">
-<div class="img-profile w-50 my-3 d-flex justify-content-center align-items-center">
+<div class="img-profile w-50 my-3 d-flex align-items-center">
 <% if @user.photo.attached? %>
   <%= cl_image_tag(@user.photo.key, class: "avatar-x-large") %>
   <% else %>

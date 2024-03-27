@@ -27,6 +27,7 @@
   height: 60px;
   width: 60px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .user-card .avatar {
@@ -99,7 +100,8 @@ h2 {
 .user-card-link {
   width: 100%;
   margin: 0;
-  padding: 18px;
+  padding-top: 18px;
+  padding-bottom: 18px;
   display: flex;
   justify-content: space-between;
   text-decoration: none;
