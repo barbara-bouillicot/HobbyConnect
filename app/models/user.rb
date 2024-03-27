@@ -33,6 +33,7 @@ class User < ApplicationRecord
     chatrooms_as_asker + chatrooms_as_receiver
   end
 
+
   def has_request?(event)
     Request.find_by(user: self, event: event)
   end
