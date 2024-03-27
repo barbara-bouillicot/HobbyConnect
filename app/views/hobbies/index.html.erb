@@ -19,7 +19,7 @@
       <div class="hobby-hub-card" data-bs-toggle="modal" data-bs-target="#hobbyModal<%= hobby.id %>">
         <div class="hobby-card-image">
           <% if hobby.photo.attached? %>
-            <div class="icon-container"><%= cl_image_tag hobby.photo.key, width: "25px", height: "25px" %></div>
+            <div class="icon-container"><%= cl_image_tag hobby.photo.key, width: "28px", height: "28px" %></div>
           <% else %>
             <%= hobby.name %>
           <% end %>
@@ -54,6 +54,10 @@
                       <a href="users/<%= item.user.id %>">
                         <%= cl_image_tag item.user.photo.key  %>
                       </a>
+                  <% else %>
+                    <a href="users/<%= item.user.id %>">
+                    <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-x-large border") %>
+                    </a>
                   <% end %>
                 <% end %>
               </div>
