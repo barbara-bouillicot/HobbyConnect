@@ -46,6 +46,10 @@
   text-align: center;
 }
 
+.interested-btn {
+  margin: 16px;
+}
+
 .end {
   border-top: solid 1px #e3e3e3;
   padding: 1rem;
@@ -65,4 +69,20 @@
 .avatar-small {
   height: 30px;
   width: 30px;
+}
+
+.event-modal-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  padding: 15px !important;
+}
+
+.event-infos {
+  display: flex !important;
+  flex-direction: column !important;
+  color: black !important;
+}
+
+.event-infos, p {
+  color:black !important;
 }
