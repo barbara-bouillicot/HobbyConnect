@@ -28,6 +28,13 @@
     .form-group {
       margin-bottom: 0;
     }
+
+    .btn {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      height: 62px;
+    }
+
   }
 }
 
@@ -43,21 +50,36 @@
 
 
   .message-content {
-    padding-right: 20px;
+    padding-left: 6px;
+  }
+
+  p {
+    text-align: left;
+    margin-bottom: 3px;
   }
 }
+
 
 .receiver-message {
   max-width: 75%;
   background-color: rgba(200, 229, 247, 0.803);
   border-radius: 30px;
-  text-align: left;
+  text-align: right;
   padding: 10px;
   word-wrap: break-word;
   margin-top: 15px;
 
   .message-content {
-    padding-left: 20px;
+    padding-left: 6px;
+  }
+
+  p {
+    margin-bottom: 3px;
+    text-align: left;
+  }
+
+  i {
+    text-align: right;
   }
 }
 
