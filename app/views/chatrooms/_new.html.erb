@@ -23,11 +23,15 @@
 
               <% end %>
             </div>
+            <% if Chatroom.exists?(asker_id: current_user.id, receiver_id: @user.id) || Chatroom.exists?(asker_id: @user.id, receiver_id: current_user.id) %>
+              <p>You and <%= @user.username %> and already buddies.</p>
+            <% else %>
             <%= simple_form_for @chatroom do |f| %>
               <%= f.hidden_field :name, value: "#{current_user.username} + #{@user.username}" %>
               <%= f.hidden_field :asker_id, value: current_user.id %>
               <%= f.hidden_field :receiver_id, value: @user.id %>
               <%= f.submit class:"btn btn-form", value: "Confirm"%>
+            <% end %>
             <% end %>
           </div>
         </div>
