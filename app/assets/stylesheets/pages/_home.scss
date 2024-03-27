@@ -61,6 +61,7 @@
   height: 50px;
   background-color: #96c8fb;
   background-image: linear-gradient(315deg, #96c8fb 0%, #ddbdfc 74%);
+  box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
 }
 
 #icon2 {
@@ -111,7 +112,6 @@
   75% { left: 0; top: calc(50vh - 25px); }
   100% { left: calc(50vw - 25px); top: calc(20vh - 25px); }
 }
-
 
 
 .app-name {
