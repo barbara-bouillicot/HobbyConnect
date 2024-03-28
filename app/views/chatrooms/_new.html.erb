@@ -32,7 +32,7 @@
               <p class="text-center">You and <%= @user.username %> are already buddies.</p>
               <% end %>
             <% else %>
-            <%= simple_form_for @chatroom do |f| %>
+            <%= simple_form_for @new_chatroom do |f| %>
               <%= f.hidden_field :name, value: "#{current_user.username} + #{@user.username}" %>
               <%= f.hidden_field :asker_id, value: current_user.id %>
               <%= f.hidden_field :receiver_id, value: @user.id %>
