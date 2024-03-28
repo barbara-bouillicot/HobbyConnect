@@ -7,8 +7,11 @@
     <% end %>
     <% end %>
 </div>
+<div>
+    <p class="index-text-top"><em>Events near you...</em></p>
+</div>
     <div class="event-index-container">
-    <% @events.each do |event| %>
+    <% @events.order(:date).each do |event| %>
       <div class="event-card" data-bs-toggle="modal" data-bs-target="#eventDetailModal<%= event.id %>">
       <div class="d-flex align-items-center">
         <div class="user-hobby-icons-container d-flex p-3">
