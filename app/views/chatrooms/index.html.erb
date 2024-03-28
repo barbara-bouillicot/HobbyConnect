@@ -19,7 +19,14 @@
       <% end %>
 
       <% unless chatroom.status == "rejected" %>
-        <%= link_to chatroom_path(chatroom), class: "full-card-link", data: { controller: "card-click", action:"click->card-click#click" } do %>
+      <% card_link = nil %>
+      <% if chatroom.status == "accepted" %>
+      <% card_link = chatroom_path(chatroom) %>
+      <% elsif chatroom.status == "pending" %>
+      <% card_link = current_user == chatroom.asker ? user_path(chatroom.receiver) : user_path(chatroom.asker) %>
+      <% end %>
+
+        <%= link_to card_link, class: "full-card-link", data: { controller: "card-click", action:"click->card-click#click" } do %>
           <div class="container-chatroom d-flex align-items-center">
             <div class="avatar-container m-3">
               <% if user.photo.attached? && chatroom.status != "rejected" %>
