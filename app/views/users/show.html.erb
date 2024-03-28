@@ -28,7 +28,7 @@
 <% end %>
 </div>
 
-<div class="hobbies-profile d-flex justify-content-between align-items-center flex-wrap w-50" data-controller="matching-modal">
+<div class="hobbies-profile d-flex justify-content-center align-items-center flex-wrap w-50" data-controller="matching-modal">
   <% @hobbies.each do |hobby| %>
     <% if hobby.photo.attached? && @user != current_user && current_user.hobbies.include?(hobby) %>
       <div class="icon-container icons-selected">
@@ -83,7 +83,7 @@
       </div>
       <div >
         <h5><%= event.name%></h5>
-        <p><%= event.location%></p>
+        <p><%= event.location_by_city %></p>
         <p><%= event.date.strftime("%d %B %Y") %></p>
       </div>
     </div>
@@ -108,7 +108,7 @@
             </div>
             <div>
               <h5><%= request.event.name%></h5>
-              <p><%= request.event.location%></p>
+              <p><%= request.event.location_by_city %></p>
               <p><%= request.event.date.strftime("%d %B %Y") %></p>
             </div>
           </div>

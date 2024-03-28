@@ -6,8 +6,8 @@
   <div class="container chatroom"
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-<div class="avatar_and_name">
 
+    <div class="avatar_and_name">
 
     <% if @chatroom.asker == current_user %>
       <%= link_to user_path(@chatroom.receiver) do %>
@@ -48,9 +48,9 @@
       <%= f.input :content,
         label: false,
         placeholder: "Message your new buddy here...",
-        wrapper_html: {class: "flex-grow-1"}
+        wrapper_html: { data: { chatroom_subscription_target: "input" }, class: "flex-grow-1" }
       %>
-      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+      <%= f.submit "Send", class: "btn btn-primary mb-3 send-btn" %>
     <% end %>
   </div>
 </body>
