@@ -28,6 +28,7 @@
   width: 60px;
   border-radius: 50%;
   object-fit: cover;
+  border: solid 1px #4747476e;
 }
 
 .user-card .avatar {
@@ -105,6 +106,10 @@ h2 {
   display: flex;
   justify-content: space-between;
   text-decoration: none;
+}
+
+.username {
+  font-size: 22px !important;
 }
 
 .hobbies-profile {

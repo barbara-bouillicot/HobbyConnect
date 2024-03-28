@@ -13,9 +13,9 @@
           <div style="margin: 0; text-align: left; width: 100%">
             <h1 class="modal-title fs-5" style="margin-top: 0; text-align: left" id="eventDetailModalLabel<%= event.id %>" data-model-title="<%= event.name %>"><%= event.name %></h1>
             <% if current_user == event.user %>
-              <p style="margin: 0">created by yourself</p>
+              <p style="margin: 0"><em>created by yourself</em></p>
             <% else %>
-              <p class="user-link" style="margin: 0">by <%= link_to event.user.username, user_path(event.user.id)%></p>
+              <p class="user-link" style="margin: 0"><em>by <%= link_to event.user.username, user_path(event.user.id)%></em></p>
             <% end %>
           </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -23,7 +23,7 @@
         </div>
       <div class="separation-line hr hr-blurry"></div>
       <div class="modal-body event-infos" data-edit-event-target="infos">
-        <p class><b><%= event.location_by_city %></b><em><%= event.date.strftime("%d %B %Y") %></em></p>
+        <p class><b><%= event.date.strftime("%d %B %Y") %></b><br><em><%= event.location_by_city %></em></p>
         <p class="fs-5"><%= event.description %></h5>
       </div>
       <div class="end">
