@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   validates :username, :birthdate, :location, :bio, presence: true
-  validates :username, uniqueness: true
+  validates :username, uniqueness: true, length: { in: 2..10 }
   validates :bio, length: { in: 20..200 }
   validate :validate_age
 
