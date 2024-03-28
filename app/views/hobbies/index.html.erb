@@ -49,16 +49,20 @@
               <h2>Fans</h2>
               <div class="hobby-modal-users">
                 <% list = @selected_hobbies.where(hobby_id: hobby.id) %>
-                <% list[0..4].each do |item| %>
-                  <% if item.user.photo.attached? %>
+                <% if list.length > 0 %>
+                  <% list[0..4].each do |item| %>
+                    <% if item.user.photo.attached? %>
+                        <a href="users/<%= item.user.id %>">
+                          <%= cl_image_tag item.user.photo.key  %>
+                        </a>
+                    <% else %>
                       <a href="users/<%= item.user.id %>">
-                        <%= cl_image_tag item.user.photo.key  %>
+                      <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-x-large border") %>
                       </a>
-                  <% else %>
-                    <a href="users/<%= item.user.id %>">
-                    <%= image_tag("https://cdn-icons-png.freepik.com/512/8742/8742495.png", class: "avatar-x-large border") %>
-                    </a>
+                    <% end %>
                   <% end %>
+                <% else %>
+                  <p style="color: grey !important"><em>No fans yet</em></p>
                 <% end %>
               </div>
               <% if list.length > 5 %>
@@ -67,6 +71,7 @@
                 </p>
               <% end %>
               <h2 style="margin-top: 16px">Events </h2>
+              <% if @events.where(hobby_id: hobby.id).length > 0 %>
                 <% @events.where(hobby_id: hobby.id)[0..2].each do |event| %>
                     <p style="border-bottom: solid #e3e3e3 1px; margin-bottom: 6px; padding-bottom: 6px"><a href="users/<%= event.user.id %>"><b><%= event.name %></b><br><em><%= event.location_by_city %></em><br><%= event.date.strftime("%d %B %Y") %></a></p>
                 <% end %>
@@ -75,6 +80,9 @@
                     <%= link_to "See all #{hobby.name} Events", events_path(hobby_name: hobby.name)%>
                   </p>
                 <% end %>
+              <% else %>
+                <p style="color: grey !important"><em>No events yet</em></p>
+              <% end %>
             </div>
           </div>
         </div>
