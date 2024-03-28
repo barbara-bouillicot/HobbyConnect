@@ -24,6 +24,7 @@ end
     @events = @user.events
     @requests = Request.where(user_id: current_user.id)
     @hobbies = @user.hobbies
-    @chatroom = Chatroom.new
+    @chatroom = Chatroom.find_by(asker_id: current_user.id, receiver_id: @user.id)|| Chatroom.find_by(asker_id: @user.id, receiver_id: current_user.id)
+
   end
 end
