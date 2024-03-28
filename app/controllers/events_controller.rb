@@ -4,7 +4,6 @@ class EventsController < ApplicationController
     if params[:search].present?
       @events = Event.near(current_user.location, 10).joins(:hobby).where("events.name ILIKE ? OR hobbies.name ILIKE ?", "%#{params[:search]}%","%#{params[:search]}%")
     elsif params[:hobby_name].present?
-      raise
       @events = Event.near(current_user.location, 10).joins(:hobby).distinct.where(hobby: { name: params[:hobby_name] })
     else
       @events = Event.near(current_user.location, 10)
