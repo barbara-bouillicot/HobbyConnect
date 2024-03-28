@@ -14,7 +14,7 @@
 
   <div class="hobby-hub-card-container">
 
-    <% @hobbies.each do |hobby| %>
+    <% @hobbies.order(:name).each do |hobby| %>
 
       <div class="hobby-hub-card" data-bs-toggle="modal" data-bs-target="#hobbyModal<%= hobby.id %>">
         <div class="hobby-card-image">
@@ -67,7 +67,7 @@
               </div>
               <% if list.length > 5 %>
                 <p class="see-all-link">
-                  <%= link_to "See all #{hobby.name} Fans", users_path(search: hobby.name)%>
+                 <em><%= link_to "See all #{hobby.name} Fans", users_path(search: hobby.name)%></em>
                 </p>
               <% end %>
               <h2 style="margin-top: 16px">Events </h2>
@@ -77,7 +77,7 @@
                 <% end %>
                 <% if @events.where(hobby_id: hobby.id).length > 3 %>
                   <p class="see-all-link">
-                    <%= link_to "See all #{hobby.name} Events", events_path(hobby_name: hobby.name)%>
+                    <em><%= link_to "See all #{hobby.name} Events", events_path(hobby_name: hobby.name)%></em>
                   </p>
                 <% end %>
               <% else %>
