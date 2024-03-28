@@ -28,7 +28,7 @@
 <% end %>
 </div>
 
-<div class="hobbies-profile d-flex justify-content-center align-items-center flex-wrap w-50" data-controller="matching-modal">
+<div class="hobbies-profile d-flex justify-content-center align-items-center flex-wrap" data-controller="matching-modal">
   <% @hobbies.each do |hobby| %>
     <% if hobby.photo.attached? && @user != current_user && current_user.hobbies.include?(hobby) %>
       <div class="icon-container icons-selected">
