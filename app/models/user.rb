@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  geocoded_by :location
+  geocoded_by :location, language: :en
   after_validation :geocode, if: :will_save_change_to_location?
 
   has_many :chatrooms_as_asker, class_name: "Chatroom", foreign_key: :asker_id, dependent: :destroy
@@ -28,6 +28,8 @@ class User < ApplicationRecord
       User.all
     end
   end
+
+
 
   def chatrooms
     chatrooms_as_asker + chatrooms_as_receiver

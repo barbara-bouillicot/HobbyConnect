@@ -68,7 +68,7 @@
               <% end %>
               <h2 style="margin-top: 16px">Events </h2>
                 <% @events.where(hobby_id: hobby.id)[0..2].each do |event| %>
-                    <p style="border-bottom: solid #e3e3e3 1px; margin-bottom: 6px; padding-bottom: 6px"><a href="users/<%= event.user.id %>"><b><%= event.name %></b><br><em><%= event.location %></em><br><%= event.date.strftime("%d %B %Y") %></a></p>
+                    <p style="border-bottom: solid #e3e3e3 1px; margin-bottom: 6px; padding-bottom: 6px"><a href="users/<%= event.user.id %>"><b><%= event.name %></b><br><em><%= event.location_by_city %></em><br><%= event.date.strftime("%d %B %Y") %></a></p>
                 <% end %>
                 <% if @events.where(hobby_id: hobby.id).length > 3 %>
                   <p class="see-all-link">
