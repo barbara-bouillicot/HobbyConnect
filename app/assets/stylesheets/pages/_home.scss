@@ -60,24 +60,23 @@
   width: 50px;
   height: 50px;
   background-color: #96c8fb;
-  background-image: linear-gradient(315deg, #96c8fb 0%, #ddbdfc 74%);
+  background: linear-gradient(315deg, #96c8fb 0%, #ddbdfc 74%);
   box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
 }
-
-#icon2 {
-  animation: move2 20s ease-in-out infinite alternate;
+#icon2{
+  animation: move2 20s ease-in-out infinite alternate, changeImage2 20s infinite;
 }
 
 #icon3 {
-  animation: move3 20s ease-in-out infinite alternate;
+  animation: move3 20s ease-in-out infinite alternate, changeImage3 20s infinite;
 }
 
 #icon4 {
-  animation: move4 20s ease-in-out infinite alternate;
+  animation: move4 20s ease-in-out infinite alternate, changeImage4 20s infinite;
 }
 
 #icon5 {
-  animation: move5 20s ease-in-out infinite alternate;
+  animation: move5 20s ease-in-out infinite alternate, changeImage5 20s infinite;
 }
 
 @keyframes move2 {
@@ -113,6 +112,138 @@
   100% { left: calc(50vw - 25px); top: calc(20vh - 25px); }
 }
 
+@keyframes changeImage2 {
+  0% {
+    background: url("tent"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+  25% {
+    background-image: url("painting.png"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+  50% {
+    background-image: url("surfing.png"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+  75% {
+    background-image: url("theatre.png"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+  100% {
+    background-image: url("tent.png"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+}
+
+@keyframes changeImage3 {
+  0% {
+    background: url("music"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+  25% {
+    background-image: url("healthy-heart.png"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+  50% {
+    background-image: url("comedy.png"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+  75% {
+    background-image: url("coding.png"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+  100% {
+    background-image: url("music.png"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+}
+
+@keyframes changeImage4 {
+  0% {
+    background: url("astronomy"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+  25% {
+    background-image: url("ballet.png"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+  50% {
+    background-image: url("pray.png"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+  75% {
+    background-image: url("la-photographie.png"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+  100% {
+    background-image: url("astronomy.png"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+}
+
+
+@keyframes changeImage5 {
+  0% {
+    background: url("travelling"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+  25% {
+    background-image: url("videogames.png"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+  50% {
+    background-image: url("animal-care.png"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+  75% {
+    background-image: url("sports.png"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+  100% {
+    background-image: url("travelling.png"),url("bg-color.png");
+    background-position: center, center;
+    background-size: 35px, contain;
+    background-repeat: no-repeat;
+  }
+}
 
 .app-name {
   opacity: 0;
