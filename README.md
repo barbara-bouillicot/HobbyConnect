@@ -3,7 +3,7 @@
 HobbyConnect is a fun and straightforward mobile web app to connect people who share the same hobbies with an icon-based matching system for quick connections as well as the possibility to create events and share them.<br><br>
 This project has been completed in 2 weeks during Le Wagon bootcamp.
 
-You can find our web app 👉 [HobbyConnect](https://hobbyconnect.lol/)
+You can find our web app there 👉 [HobbyConnect](https://hobbyconnect.lol/)
 
 # Features
 
