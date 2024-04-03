@@ -20,5 +20,5 @@ You can find our web app there 👉 [HobbyConnect](https://hobbyconnect.lol/)
 
 # Team
 
-This project had been completed by [Luisa Aslanidis](https://github.com/luepistaxis), [Laura Zocca](https://github.com/laurazocca), [Matthew Gregory](https://github.com/matthewegregory), and [Barbara Bouillicot](https://github.com/barbara-bouillicot)
+This project has been completed by [Luisa Aslanidis](https://github.com/luepistaxis), [Laura Zocca](https://github.com/laurazocca), [Matthew Gregory](https://github.com/matthewegregory), and [Barbara Bouillicot](https://github.com/barbara-bouillicot)
 
